@@ -2551,7 +2551,7 @@
       updateNavFromScroll();
       updateScrollProgress();
 
-      const savedLanguage = (function () {
+      const savedLanguage = en (function () {
         try {
           return localStorage.getItem('site-language') || 'zh';
         } catch (err) {
