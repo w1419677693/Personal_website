@@ -493,6 +493,41 @@
       overflow: hidden;
     }
 
+    .lang-toggle {
+      cursor: pointer;
+      font: inherit;
+      min-width: 84px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #f5fbff;
+      background: linear-gradient(135deg, rgba(86, 224, 255, 0.28), rgba(106, 141, 255, 0.2), rgba(167, 107, 255, 0.24));
+      border-color: rgba(86, 224, 255, 0.42);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06) inset,
+        0 12px 28px rgba(86,224,255,0.18),
+        0 0 28px rgba(167,107,255,0.12);
+      text-transform: uppercase;
+    }
+
+    .lang-toggle::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.02));
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .lang-toggle:hover {
+      transform: translateY(-2px) scale(1.02);
+      border-color: rgba(125, 255, 207, 0.52);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.1) inset,
+        0 18px 36px rgba(86,224,255,0.22),
+        0 0 34px rgba(167,107,255,0.18);
+    }
+
     .nav-links a:hover,
     .btn:hover {
       transform: translateY(-1px);
@@ -503,7 +538,7 @@
     .nav-indicator {
       position: absolute;
       top: 6px;
-      left: 6px;
+      left: 0;
       width: 0;
       height: calc(100% - 12px);
       border-radius: 999px;
@@ -799,6 +834,31 @@
       align-items: start;
     }
 
+    .project-card--feature {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1.08fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .project-card--feature .cover {
+      height: 100%;
+      min-height: 280px;
+      margin-bottom: 0;
+    }
+
+    .project-card--feature .project-feature-body {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .project-card--feature .bullet-list,
+    .project-card--feature .tags {
+      margin-top: 0;
+    }
+
     .card {
       padding: 26px;
       border-radius: 22px;
@@ -860,6 +920,27 @@
       background: rgba(255,255,255,0.03);
       transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
       transform-origin: center;
+    }
+
+    .cover--project3,
+    .modal-project__cover--project3 {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      object-position: center top;
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .modal-project__cover--project3 {
+      min-height: 280px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
@@ -1366,6 +1447,12 @@
       .hero-grid, .grid-2, .grid-3, .skills, .hero-contact, .strengths, .timeline, .projects-grid {
         grid-template-columns: 1fr;
       }
+      .project-card--feature {
+        grid-template-columns: 1fr;
+      }
+      .project-card--feature .cover {
+        min-height: 220px;
+      }
       .hero { padding-top: 42px; }
       .hero-main, .hero-side, .card { padding: 22px; }
       .nav-inner { align-items: flex-start; flex-direction: column; }
@@ -1418,6 +1505,7 @@
         <a href="#skills" data-nav-section="skills">技能</a>
         <a href="#experience" data-nav-section="experience">项目经验</a>
         <a href="#projects" data-nav-section="projects">作品集</a>
+        <button class="btn lang-toggle" id="langToggle" type="button" aria-label="切换语言">EN</button>
       </div>
     </div>
     <div class="scroll-progress" aria-hidden="true">
@@ -1658,6 +1746,33 @@
           <button class="btn btn-primary project-open-btn" type="button" data-open-project="2">查看详细作品</button>
         </article>
       </div>
+
+      <article class="card project-card project-card--feature reveal">
+        <img class="cover cover--project3" src="./site-assets/QQ20260419-183335.png" alt="项目三封面图" />
+        <div class="project-feature-body">
+          <div class="project-top">
+            <div>
+              <h3>项目三｜疫情背景下的社交媒体数据叙事网页</h3>
+              <p>围绕 COVID-19 时期社交媒体使用、负面话语扩散与仇恨犯罪影响制作的长滚动数据可视化网页。</p>
+            </div>
+            <div class="project-index">03</div>
+          </div>
+          <ul class="bullet-list">
+            <li>以专题叙事结构组织信息，从引言、树图到地图与折线图逐步展开研究结论。</li>
+            <li>使用固定侧边导航帮助用户在长页面中快速定位不同图表章节。</li>
+            <li>通过 treemap、全球增长地图与英格兰仇恨犯罪折线图串联“使用增长—负面传播—社会影响”的逻辑。</li>
+            <li>整体视觉采用深色背景与酒红色渐变，强化疫情语境下的沉浸感与信息密度。</li>
+            <li>适合作为“数据可视化 + 网页叙事表达”方向的代表作品展示。</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">数据可视化</span>
+            <span class="tag">专题网页</span>
+            <span class="tag">交互叙事</span>
+            <span class="tag">信息设计</span>
+          </div>
+          <button class="btn btn-primary project-open-btn" type="button" data-open-project="3">查看详细作品</button>
+        </div>
+      </article>
     </section>
 
   </main>
@@ -1865,6 +1980,60 @@
     </div>
   </template>
 
+  <template id="project-detail-template-3">
+    <div class="modal-project modal-project--3">
+      <img class="modal-project__cover modal-project__cover--project3" src="./site-assets/QQ20260419-183335.png" alt="项目三封面图" />
+      <div class="modal-project__head">
+        <div>
+          <h2 class="modal-project-title">项目三｜疫情背景下的社交媒体数据叙事网页</h2>
+          <p class="modal-project__lead">
+            一个围绕 COVID-19 背景下社交媒体影响的长滚动专题网页。页面通过固定导航、深色沉浸式视觉和多组数据图表，把“使用增长、虚假信息、仇恨言论与社会后果”串联成一条完整叙事线。
+          </p>
+        </div>
+        <div class="modal-project__index" aria-hidden="true">03</div>
+      </div>
+      <div class="tags">
+        <span class="tag">数据可视化</span>
+        <span class="tag">长页面叙事</span>
+        <span class="tag">专题研究表达</span>
+        <span class="tag">网页信息架构</span>
+      </div>
+      <div class="detail-grid">
+        <div class="detail-block">
+          <strong>项目主题</strong>
+          该网页聚焦疫情期间社交媒体的双重性：一方面它成为人们在隔离与封锁中的重要信息与陪伴渠道，另一方面也放大了错误信息、仇恨内容与对特定群体的负面影响。
+        </div>
+        <div class="detail-block">
+          <strong>信息结构</strong>
+          页面采用长滚动专题结构，左侧为固定导航，主区域按章节依次展开 Introduction、Tree map、Global growth、Screen time、Twitter hashtag、Fake news on Twitter、Hate crimes in England、Literature review 与 Conclusion。
+        </div>
+        <div class="detail-block">
+          <strong>核心可视化</strong>
+          <ul class="mini-list">
+            <li>Treemap：用层级结构直观呈现社交媒体使用增加及其后续影响之间的关系。</li>
+            <li>全球增长地图：展示 2020 年不同国家社交网络用户增长率，帮助用户快速捕捉全球变化。</li>
+            <li>仇恨犯罪折线图：把网络负面话语与现实社会影响连接起来，强化论点的社会后果维度。</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <strong>交互与阅读体验</strong>
+          固定侧边导航降低了长页面浏览成本；每个模块用清晰的大标题、简短引导文字和单一核心图表形成“读一段文字，看一张图，得一个结论”的阅读节奏。
+        </div>
+        <div class="detail-block">
+          <strong>视觉风格</strong>
+          页面整体使用黑灰到酒红色的渐变背景，并以白色标题与高对比图表颜色突出重点，让研究型内容既有情绪氛围，也保持较强的信息可读性。
+        </div>
+        <div class="detail-block">
+          <strong>适合作品集的原因</strong>
+          这个项目不仅展示了网页实现能力，也体现了数据叙事、信息架构组织、研究内容表达和视觉氛围塑造，是很适合补充到作品集中的“数据专题网页”类型作品。
+        </div>
+      </div>
+      <div class="modal-actions">
+        <a class="btn btn-primary" href="https://personalportfolio3100.netlify.app/" target="_blank" rel="noreferrer">打开原网页</a>
+      </div>
+    </div>
+  </template>
+
   <footer class="footer wrap reveal">
     王淙立的个人网站
   </footer>
@@ -1877,6 +2046,7 @@
       const templates = {
         1: document.getElementById('project-detail-template-1'),
         2: document.getElementById('project-detail-template-2'),
+        3: document.getElementById('project-detail-template-3'),
       };
       let lastFocus = null;
 
@@ -1935,6 +2105,354 @@
       const supportsFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
       const navBar = document.querySelector('.nav');
       const navIndicator = document.querySelector('.nav-indicator');
+      const langToggle = document.getElementById('langToggle');
+      const modal = document.getElementById('project-modal');
+      const modalCloseBtn = document.querySelector('.project-modal__close');
+      const template1 = document.getElementById('project-detail-template-1');
+      const template2 = document.getElementById('project-detail-template-2');
+      const template3 = document.getElementById('project-detail-template-3');
+      const zhState = {
+        title: document.title,
+        lang: document.documentElement.lang || 'zh-CN',
+        template1: template1 ? template1.innerHTML : '',
+        template2: template2 ? template2.innerHTML : '',
+        template3: template3 ? template3.innerHTML : ''
+      };
+
+      function setText(selector, value, root) {
+        const el = (root || document).querySelector(selector);
+        if (el && typeof value === 'string') el.textContent = value;
+      }
+
+      function setAttr(selector, attr, value, root) {
+        const el = (root || document).querySelector(selector);
+        if (el && typeof value === 'string') el.setAttribute(attr, value);
+      }
+
+      function applyEnglish() {
+        document.documentElement.lang = 'en';
+        document.title = 'Congli Wang | Product Manager / AI Product Manager';
+        if (langToggle) {
+          langToggle.textContent = '中文';
+          langToggle.setAttribute('aria-label', 'Switch language');
+          langToggle.dataset.lang = 'en';
+        }
+        setText('.nav-links a[data-nav-section="about"]', 'Education');
+        setText('.nav-links a[data-nav-section="strengths"]', 'Strengths');
+        setText('.nav-links a[data-nav-section="skills"]', 'Skills');
+        setText('.nav-links a[data-nav-section="experience"]', 'Experience');
+        setText('.nav-links a[data-nav-section="projects"]', 'Portfolio');
+        setText('.eyebrow', 'Product Manager / AI Product Manager · Personal Portfolio');
+        setText('.hero-title-line', 'Congli Wang');
+        setText('.hero-title-role', 'Product Manager / AI Product Manager');
+        setText('.intro-label', 'Overview');
+        setText('.lead', 'Currently pursuing graduate study in Interaction Design at the University of Sydney, with experience in user research, requirement analysis, prototyping, usability testing, and cross-functional collaboration. I approach product work from real user problems, prioritize opportunities through competitor analysis and testing feedback, and help turn ideas into practical solutions. With both UI/UX design knowledge and working skills in Figma, HTML, CSS, JavaScript, and Python, I aim to grow in product manager, product assistant, and AI product roles.');
+        setText('.hero-actions .btn-primary', 'View Projects');
+        setText('.hero-actions .btn:not(.btn-primary)', 'Experience');
+        setText('.hero-contact .contact-chip:nth-child(1) small', 'Phone');
+        setText('.hero-contact .contact-chip:nth-child(2) small', 'Email');
+        setText('.hero-contact .contact-chip:nth-child(3) small', 'WeChat');
+        setText('.hero-side .stat:nth-of-type(2) small', 'Education');
+        setText('.hero-side .stat:nth-of-type(2) strong', 'University of Sydney');
+        setText('.hero-side .stat:nth-of-type(2) div', 'B.Des. in Interaction Design / M.Des. in Interaction Design');
+        setText('.hero-side .stat:nth-of-type(3) small', 'Target Role');
+        setText('.hero-side .stat:nth-of-type(3) strong', 'Product Manager / AI Product Manager');
+        setText('.hero-side .stat:nth-of-type(3) div', 'Requirement analysis, prototyping, testing, product delivery');
+        setText('.hero-side .stat:nth-of-type(4) small', 'Keywords');
+        ['Requirement Analysis', 'User Research', 'Figma', 'Usability Testing', 'HTML/CSS/JS', 'Python'].forEach(function (text, i) {
+          setText('.hero-side .stat:nth-of-type(4) .tag:nth-child(' + (i + 1) + ')', text);
+        });
+        setText('#about .section-title', 'Education');
+        setText('#about .item:nth-child(1) h4', 'Bachelor of Interaction Design');
+        setText('#about .item:nth-child(1) .meta', '2022 – 2024 · University of Sydney');
+        setText('#about .item:nth-child(1) li:nth-child(1)', 'Studied JavaScript, HTML, CSS, and Adobe tools in a systematic way.');
+        setText('#about .item:nth-child(1) li:nth-child(2)', 'Built strong skills in Figma, prototyping, user testing, and iterative design.');
+        setText('#about .item:nth-child(2) h4', 'Master of Interaction Design (In Progress)');
+        setText('#about .item:nth-child(2) .meta', '2025 · University of Sydney');
+        setText('#about .item:nth-child(2) li:nth-child(1)', 'Deepening work in UI/UX optimization, testing methods, and design improvement paths.');
+        setText('#about .item:nth-child(2) li:nth-child(2)', 'Strengthening the full loop from research to implementation.');
+        setText('#strengths .section-title', 'Core Strengths');
+        setText('#strengths .section-desc', 'This version is tailored for product roles, so I focus my strengths on requirement understanding, user research, project delivery, and product communication.');
+        setText('#strengths .strength-card:nth-child(1) h3', 'Requirement Analysis and Problem Structuring');
+        setText('#strengths .strength-card:nth-child(1) p', 'I can prioritize issues by combining user feedback, competitor analysis, and project goals, then turn vague problems into actionable plans.');
+        setText('#strengths .strength-card:nth-child(2) h3', 'User Research and Iterative Testing');
+        setText('#strengths .strength-card:nth-child(2) p', 'I am familiar with semi-structured interviews, scenario-based tasks, usability testing, issue synthesis, and prioritization, and I use feedback to drive continuous iteration.');
+        setText('#strengths .strength-card:nth-child(3) h3', 'Cross-team Delivery and Product Communication');
+        setText('#strengths .strength-card:nth-child(3) p', 'I bring experience in task breakdown, version planning, stakeholder communication, and teamwork, and I can express ideas through both Figma and code-based prototypes.');
+        setText('#skills .section-title', 'Skill Matrix');
+        setText('#skills .section-desc', 'My product skills are the main axis, supported by an interaction design background in prototyping, user experience, and communication.');
+        setText('#skills .skill-block:nth-child(1) strong', 'Product Skills');
+        ['Requirement Analysis', 'Competitor Analysis', 'Task Breakdown', 'Version Planning'].forEach(function (text, i) {
+          setText('#skills .skill-block:nth-child(1) span:nth-child(' + (i + 2) + ')', text);
+        });
+        setText('#skills .skill-block:nth-child(2) strong', 'Research and Testing');
+        ['Semi-structured Interviews', 'Scenario Task Design', 'Usability Testing', 'Issue Prioritization'].forEach(function (text, i) {
+          setText('#skills .skill-block:nth-child(2) span:nth-child(' + (i + 2) + ')', text);
+        });
+        setText('#skills .skill-block:nth-child(3) strong', 'Prototyping and Communication');
+        ['Figma', 'Balsamiq', 'Information Architecture', 'Mid/High-fidelity Prototypes'].forEach(function (text, i) {
+          setText('#skills .skill-block:nth-child(3) span:nth-child(' + (i + 2) + ')', text);
+        });
+        setText('#skills .skill-block:nth-child(4) strong', 'Technical Range');
+        ['HTML', 'CSS', 'JavaScript', 'Python', 'Rhino', 'Fusion 360'].forEach(function (text, i) {
+          setText('#skills .skill-block:nth-child(4) span:nth-child(' + (i + 2) + ')', text);
+        });
+        setText('#experience .section-title', 'Projects and Internship');
+        setText('#experience .section-desc', 'Together, these experiences form the foundation of my transition into product roles, combining research and testing with collaboration, design communication, and execution.');
+        setText('#experience .item:nth-child(1) .meta', 'Internship');
+        setText('#experience .item:nth-child(1) h4', 'Vancheer R&D UI Team | UI Design Intern');
+        setText('#experience .item:nth-child(1) li:nth-child(1)', 'Contributed to UI design tasks for real products and learned to understand business-driven design requirements.');
+        setText('#experience .item:nth-child(1) li:nth-child(2)', 'Practiced documenting requests systematically and translating cross-department input into interface solutions.');
+        setText('#experience .item:nth-child(1) li:nth-child(3)', 'Built practical experience collaborating with multiple roles to push design work forward.');
+        setText('#experience .item:nth-child(2) .meta', 'University Project');
+        setText('#experience .item:nth-child(2) h4', 'Focus Improvement Project | Product Experience / Project Management');
+        setText('#experience .item:nth-child(2) li:nth-child(1)', 'Led requirement clarification and competitor analysis, set testing tasks and metrics, and coordinated recruitment and schedules.');
+        setText('#experience .item:nth-child(2) li:nth-child(2)', 'Improved information hierarchy and interaction rhythm based on user feedback to optimize task completion paths.');
+        setText('#experience .item:nth-child(2) li:nth-child(3)', 'Organized reviews and version planning, aligned design, engineering, and stakeholders, and supported launch preparation.');
+        setText('#experience .item:nth-child(3) .meta', 'University / External Project');
+        setText('#experience .item:nth-child(3) h4', 'Water-saving Pop-up / Documentary Production | Collaborative Practice');
+        setText('#experience .item:nth-child(3) li:nth-child(1)', 'Handled research, testing, information architecture, and interaction flow design for the water-saving pop-up project while helping drive the team forward.');
+        setText('#experience .item:nth-child(3) li:nth-child(2)', 'Worked on shot planning, on-site coordination, and post-production handoff in documentary production, improving cross-team collaboration.');
+        setText('#experience .item:nth-child(3) li:nth-child(3)', 'These experiences strengthened my ability to manage requirements, communication, and execution in complex projects.');
+        setText('#projects .section-title', 'Selected Projects');
+        setText('#projects .section-desc', 'The following content is curated from my portfolio and highlights how I work across requirement understanding, research and testing, prototyping, and cross-team execution.');
+        setAttr('#projects .project-card:nth-child(1) .cover', 'alt', 'Project 1 cover image');
+        setText('#projects .project-card:nth-child(1) h3', 'Project 1 | Focus Improvement / Food Delivery UI Design');
+        setText('#projects .project-card:nth-child(1) .project-top p', 'An individual university project completed from background research and user interviews through two rounds of testing and final UI iteration.');
+        setText('#projects .project-card:nth-child(1) .bullet-list li:nth-child(1)', 'Started from background research and user study to build a mid-fidelity structure and overall information architecture.');
+        setText('#projects .project-card:nth-child(1) .bullet-list li:nth-child(2)', 'Used Think Aloud, SUS, and post-test interviews across multiple rounds of testing.');
+        setText('#projects .project-card:nth-child(1) .bullet-list li:nth-child(3)', 'Synthesized issues through affinity diagrams and testing feedback to guide iteration.');
+        setText('#projects .project-card:nth-child(1) .bullet-list li:nth-child(4)', 'Continuously improved onboarding, filtering efficiency, and comprehension from landing page to merchant detail pages.');
+        setText('#projects .project-card:nth-child(1) .bullet-list li:nth-child(5)', 'Delivered a complete UI color system and interaction logic to improve learnability and usability.');
+        ['Independent Project', 'User Testing', 'Affinity Analysis', 'Mid-fi to Final UI'].forEach(function (text, i) {
+          setText('#projects .project-card:nth-child(1) .tag:nth-child(' + (i + 1) + ')', text);
+        });
+        setAttr('#projects .project-card:nth-child(2) .cover', 'alt', 'Project 2 cover image');
+        setText('#projects .project-card:nth-child(2) h3', 'Project 2 | Water-saving Pop-up UI / UX Design');
+        setText('#projects .project-card:nth-child(2) .project-top p', 'A four-person team project where I defined research direction and user study methods, contributed to the full UI/UX flow, and independently completed the 3D modeling.');
+        setText('#projects .project-card:nth-child(2) .bullet-list li:nth-child(1)', 'Conducted early research, concept generation, prototyping, and two rounds of user testing around a water-saving theme.');
+        setText('#projects .project-card:nth-child(2) .bullet-list li:nth-child(2)', 'Designed an interactive pop-up installation and information flow, combining LED, rewards, and quiz screens to enhance engagement.');
+        setText('#projects .project-card:nth-child(2) .bullet-list li:nth-child(3)', 'Improved the experience through Think Aloud, observation, post-test interviews, and heuristic evaluation.');
+        setText('#projects .project-card:nth-child(2) .bullet-list li:nth-child(4)', 'The final prototype was suitable for a live pop-up setting and supported both participants and observers.');
+        setText('#projects .project-card:nth-child(2) .bullet-list li:nth-child(5)', 'Demonstrated a hybrid skill set across UI visuals, interaction flow, physical installation, and 3D modeling.');
+        ['Team Collaboration', 'Experience Design', '3D Modeling', 'Prototype Iteration'].forEach(function (text, i) {
+          setText('#projects .project-card:nth-child(2) .tag:nth-child(' + (i + 1) + ')', text);
+        });
+        setAttr('#projects .project-card--feature .cover', 'aria-label', 'Project 3 cover image');
+        setText('#projects .project-card--feature h3', 'Project 3 | Social Media Storytelling Under COVID-19');
+        setText('#projects .project-card--feature .project-top p', 'A long-form data storytelling webpage about social media usage, misinformation, and social impact during the COVID-19 period.');
+        setText('#projects .project-card--feature .bullet-list li:nth-child(1)', 'Organized the research into a narrative sequence from introduction and treemap to maps and line charts.');
+        setText('#projects .project-card--feature .bullet-list li:nth-child(2)', 'Used a fixed sidebar navigation to help users jump between sections in a long scrolling page.');
+        setText('#projects .project-card--feature .bullet-list li:nth-child(3)', 'Connected treemap, global growth map, and hate-crime trend chart into a clear logic of growth, harmful discourse, and social impact.');
+        setText('#projects .project-card--feature .bullet-list li:nth-child(4)', 'Used a dark, wine-red visual atmosphere to reinforce the emotional tone and density of the topic.');
+        setText('#projects .project-card--feature .bullet-list li:nth-child(5)', 'Works well as a portfolio piece for data visualization, information design, and web-based narrative expression.');
+        ['Data Visualization', 'Editorial Web Page', 'Interactive Storytelling', 'Information Design'].forEach(function (text, i) {
+          setText('#projects .project-card--feature .tag:nth-child(' + (i + 1) + ')', text);
+        });
+        document.querySelectorAll('.project-open-btn').forEach(function (btn) {
+          btn.textContent = 'View Full Case Study';
+        });
+        if (template1) {
+          setText('.modal-project-title', 'Project 1 | Focus Improvement / Food Delivery UI Design', template1.content);
+          setText('.modal-project__lead', 'A university UI project completed independently from kickoff and background research to user research, mid-fidelity structuring, two rounds of testing, and final screens.', template1.content);
+          ['Independent Project', 'Think Aloud · SUS · Post-test Interview', 'Affinity Diagram', 'Mid-fi to Final UI'].forEach(function (text, i) {
+            setText('.tags .tag:nth-child(' + (i + 1) + ')', text, template1.content);
+          });
+          template1.content.querySelector('.detail-block:nth-child(1)').innerHTML = '<strong>Project Context and Problem</strong>This project focused on interface design for food-delivery task flows. The challenge was to understand realistic usage contexts, define key pages and information architecture, and help new users move efficiently between merchant lists and detailed decision-making.';
+          template1.content.querySelector('.detail-block:nth-child(2)').innerHTML = '<strong>Process Overview</strong>Kickoff → Background research → User research → Mid-fidelity structure → Round 1: prototype refinement and testing summary → Round 2: prototype refinement and testing summary → Final UI including information architecture, interface structure, and color system.';
+          template1.content.querySelector('.detail-block:nth-child(3)').innerHTML = '<strong>Research / Testing Methods</strong>I combined Think Aloud, SUS, and post-test interviews to align observed behavior with subjective feedback, and used structured records across both testing rounds to support design decisions.';
+          template1.content.querySelector('.detail-block:nth-child(4)').innerHTML = '<strong>Analysis and Iteration Logic</strong>Issues from both rounds were grouped using affinity diagrams, and SUS trends helped determine the scope and priority of each iteration rather than reacting to isolated comments.';
+          template1.content.querySelector('.detail-block:nth-child(5)').innerHTML = '<strong>Key Screens and Improvements</strong><p class="subsection-title">Landing / Onboarding</p><ul class="mini-list"><li>Refined the tutorial-style onboarding based on user feedback to lower first-use friction.</li></ul><p class="subsection-title">Main Interface</p><ul class="mini-list"><li>Presented merchants and essential information to support quick scanning and early-stage filtering.</li></ul><p class="subsection-title">Merchant Interface</p><ul class="mini-list"><li>Adjusted hierarchy and presentation logic to address testing findings and make the path from list to detail clearer.</li></ul>';
+          template1.content.querySelector('.detail-block:nth-child(6)').innerHTML = '<strong>My Role and Outcome</strong>I independently built the interface from mid-fidelity to high-fidelity, completed the color and component hierarchy, and iterated through two usability cycles to deliver a coherent, demo-ready UI.';
+          setText('.modal-pdf-section > h3', 'Portfolio 1 Full Pages', template1.content);
+          setText('.modal-pdf-hint', 'The following images are page exports from "Portfolio 1.pdf" and preserve the original prototype screenshots, flow diagrams, and annotations for reference.', template1.content);
+          setAttr('.modal-gallery figure:nth-child(1) img', 'alt', 'Portfolio PDF page 1: UI design and project overview', template1.content);
+          setText('.modal-gallery figure:nth-child(1) figcaption', 'Page 1 · Cover and project overview', template1.content);
+          setAttr('.modal-gallery figure:nth-child(2) img', 'alt', 'Portfolio PDF page 2: process, testing methods, and affinity analysis', template1.content);
+          setText('.modal-gallery figure:nth-child(2) figcaption', 'Page 2 · Process framework, user testing methods, affinity diagram, and SUS analysis', template1.content);
+          setAttr('.modal-gallery figure:nth-child(3) img', 'alt', 'Portfolio PDF page 3: onboarding and main interface', template1.content);
+          setText('.modal-gallery figure:nth-child(3) figcaption', 'Page 3 · Tutorial onboarding and merchant browsing interface', template1.content);
+          setAttr('.modal-gallery figure:nth-child(4) img', 'alt', 'Portfolio PDF page 4: merchant interface', template1.content);
+          setText('.modal-gallery figure:nth-child(4) figcaption', 'Page 4 · Merchant interface', template1.content);
+        }
+        if (template2) {
+          setText('.modal-project-title', 'Project 2 | Water-saving Pop-up UI / UX Design', template2.content);
+          setText('.modal-project__lead', 'A four-person university project combining digital UI with a physical installation around a water-saving theme, with research direction, testing planning, and 3D modeling led by me.', template2.content);
+          ['Team Project', 'Pop-up / Physical Installation', '3D · Large Display', 'Multi-method Validation'].forEach(function (text, i) {
+            setText('.tags .tag:nth-child(' + (i + 1) + ')', text, template2.content);
+          });
+          template2.content.querySelector('.detail-block:nth-child(1)').innerHTML = '<strong>Project Background</strong>This project designed a water-saving themed pop-up experience that went beyond on-screen UI to include an installation, audience flow, and reward mechanisms, creating a loop of understanding, action, and feedback.';
+          template2.content.querySelector('.detail-block:nth-child(2)').innerHTML = '<strong>Role and Responsibilities</strong>The project was developed as a team effort. My main responsibilities were framing the research direction, planning research and testing, contributing deeply to interface and interaction design, and independently producing the 3D modeling and spatial expression needed for the final exhibition piece.';
+          template2.content.querySelector('.detail-block:nth-child(3)').innerHTML = '<strong>Process Overview</strong>Initial research and early concepts → Multi-round prototyping → Information architecture and UI palette → Round 1 testing and feedback analysis → First / second prototype iterations → Round 2 testing → Final iteration and event-ready prototype.';
+          template2.content.querySelector('.detail-block:nth-child(4)').innerHTML = '<strong>Installation and Interaction Structure</strong><ul class="mini-list"><li>Created an interactive display module whose components could detach from the main body while remaining connected for easy assembly and presentation.</li><li>Integrated LED lighting into leaf-shaped structures to strengthen the environmental storytelling.</li><li>Linked the reward-drop mechanism with the quiz flow so behavioral motivation and knowledge feedback reinforced one another.</li></ul>';
+          template2.content.querySelector('.detail-block:nth-child(5)').innerHTML = '<strong>Core User Flows</strong><ul class="mini-list"><li><strong>Flow 1 — Tree planting:</strong> a low-barrier interaction for people with weak water-saving awareness.</li><li><strong>Flow 2 — Growing flower:</strong> extends participation and reinforces positive feedback and completion.</li></ul>';
+          template2.content.querySelector('.detail-block:nth-child(6)').innerHTML = '<strong>User Testing Methods</strong>I used Think Aloud, SUS, on-site observation, post-test interviews, and heuristic evaluation to validate whether the experience was understandable, usable, and engaging across multiple prototype stages.';
+          template2.content.querySelector('.detail-block:nth-child(7)').innerHTML = '<strong>Interface and Content Modules</strong><p class="subsection-title">Quiz Screen</p><ul class="mini-list"><li>A lightweight quiz around water-saving knowledge, with corrective feedback and a physical reward at the end to encourage participation.</li></ul><p class="subsection-title">Final Prototype Scale and On-site Experience</p><ul class="mini-list"><li>The final large-scale prototype, documented with dimensions such as 2.5m / 3m / 0.5m, was designed for a real pop-up event.</li><li>A large side display remained readable even without direct interaction, supporting both participants and bystanders.</li></ul>';
+          template2.content.querySelector('.detail-block:nth-child(8)').innerHTML = '<strong>Outcome</strong>The final result was an event-ready experience solution with coordinated digital UI and physical installation, a clear test-driven iteration path, and a level of interaction suitable for real-world pop-up deployment.';
+          setText('.modal-pdf-section > h3', 'Portfolio 2 Full Pages', template2.content);
+          setText('.modal-pdf-hint', 'The following images are page exports from "Portfolio 2.pdf" and include installation diagrams, user flows, testing methods, quiz interfaces, and final exhibition visuals.', template2.content);
+          setAttr('.modal-gallery figure:nth-child(1) img', 'alt', 'Portfolio PDF page 1: UI/UX design and project overview', template2.content);
+          setText('.modal-gallery figure:nth-child(1) figcaption', 'Page 1 · Cover and project overview', template2.content);
+          setAttr('.modal-gallery figure:nth-child(2) img', 'alt', 'Portfolio PDF page 2: process stages and project notes', template2.content);
+          setText('.modal-gallery figure:nth-child(2) figcaption', 'Page 2 · Research and testing stages, design structure, and color overview', template2.content);
+          setAttr('.modal-gallery figure:nth-child(3) img', 'alt', 'Portfolio PDF page 3: installation and mid-fidelity prototype', template2.content);
+          setText('.modal-gallery figure:nth-child(3) figcaption', 'Page 3 · Interactive display, LED and leaf structure, and user flow diagram', template2.content);
+          setAttr('.modal-gallery figure:nth-child(4) img', 'alt', 'Portfolio PDF page 4: user testing methods', template2.content);
+          setText('.modal-gallery figure:nth-child(4) figcaption', 'Page 4 · Think Aloud, SUS, observation, post-test interview, and heuristic evaluation', template2.content);
+          setAttr('.modal-gallery figure:nth-child(5) img', 'alt', 'Portfolio PDF page 5: water-saving quiz interface', template2.content);
+          setText('.modal-gallery figure:nth-child(5) figcaption', 'Page 5 · Water-saving quiz and reward interface', template2.content);
+          setAttr('.modal-gallery figure:nth-child(6) img', 'alt', 'Portfolio PDF page 6: final prototype and dimensions', template2.content);
+          setText('.modal-gallery figure:nth-child(6) figcaption', 'Page 6 · Final exhibition prototype, dimensions, and spectator display experience', template2.content);
+        }
+        if (template3) {
+          setText('.modal-project-title', 'Project 3 | Social Media Storytelling Under COVID-19', template3.content);
+          setText('.modal-project__lead', 'A long-form editorial webpage about the role of social media during COVID-19, combining immersive visuals, fixed navigation, and multiple charts to build a clear social narrative.', template3.content);
+          ['Data Visualization', 'Long-form Narrative', 'Research Communication', 'Web Information Architecture'].forEach(function (text, i) {
+            setText('.tags .tag:nth-child(' + (i + 1) + ')', text, template3.content);
+          });
+          template3.content.querySelector('.detail-block:nth-child(1)').innerHTML = '<strong>Project Theme</strong>This webpage explores the dual role of social media during the pandemic: it became an essential channel for communication and companionship, while also amplifying misinformation, hate speech, and negative effects on specific groups.';
+          template3.content.querySelector('.detail-block:nth-child(2)').innerHTML = '<strong>Information Structure</strong>The page follows a long-form editorial structure with a fixed left navigation. The main content moves chapter by chapter through Introduction, Tree map, Global growth, Screen time, Twitter hashtag, Fake news on Twitter, Hate crimes in England, Literature review, and Conclusion.';
+          template3.content.querySelector('.detail-block:nth-child(3)').innerHTML = '<strong>Key Visualizations</strong><ul class=\"mini-list\"><li>Treemap: shows the hierarchical relationship between increased social media use and its consequences.</li><li>Global growth map: highlights country-level growth in social networking users during 2020.</li><li>Hate-crime line chart: connects online negative discourse to measurable offline social impact.</li></ul>';
+          template3.content.querySelector('.detail-block:nth-child(4)').innerHTML = '<strong>Interaction and Reading Experience</strong>The fixed sidebar navigation reduces the cost of browsing a long page. Each section combines a clear title, a short explanation, and one main visualization, creating a readable pattern of text, chart, and takeaway.';
+          template3.content.querySelector('.detail-block:nth-child(5)').innerHTML = '<strong>Visual Direction</strong>The interface uses a dark charcoal-to-wine-red gradient background, white typography, and strong chart contrast, which gives the topic both atmosphere and readability.';
+          template3.content.querySelector('.detail-block:nth-child(6)').innerHTML = '<strong>Why It Fits the Portfolio</strong>This project demonstrates web implementation, data storytelling, information architecture, and research communication, making it a strong addition as a data-visualization-focused portfolio piece.';
+          setText('.modal-actions .btn', 'Open Live Website', template3.content);
+        }
+        setAttr('#project-modal', 'aria-label', 'Project details');
+        setAttr('.project-modal__close', 'aria-label', 'Close');
+        setText('footer.footer', 'Congli Wang Personal Website');
+      }
+
+      function restoreChinese() {
+        document.documentElement.lang = zhState.lang;
+        document.title = zhState.title;
+        if (langToggle) {
+          langToggle.textContent = 'EN';
+          langToggle.setAttribute('aria-label', '切换语言');
+          langToggle.dataset.lang = 'zh';
+        }
+        setText('.nav-links a[data-nav-section="about"]', '教育背景');
+        setText('.nav-links a[data-nav-section="strengths"]', '核心优势');
+        setText('.nav-links a[data-nav-section="skills"]', '技能');
+        setText('.nav-links a[data-nav-section="experience"]', '项目经验');
+        setText('.nav-links a[data-nav-section="projects"]', '作品集');
+        setText('.eyebrow', '产品经理 / AI产品经理 · 个人求职主页');
+        setText('.hero-title-line', '王淙立');
+        setText('.hero-title-role', '产品经理 / AI产品经理');
+        setText('.intro-label', '简要介绍');
+        setText('.lead', '悉尼大学交互设计本科、硕士在读，具备用户研究、需求分析、原型设计、可用性测试与跨团队协作经验。我能够从用户问题出发，结合竞品分析、测试反馈与项目目标梳理需求优先级，并推动产品方案落地。同时理解 UI / UX 设计流程，也能使用 Figma、HTML、CSS、JavaScript 和 Python 进行产品表达与快速验证，目前希望聚焦产品经理、产品助理与 AI 产品经理方向的发展。');
+        setText('.hero-actions .btn-primary', '查看作品');
+        setText('.hero-actions .btn:not(.btn-primary)', '项目经验');
+        setText('.hero-contact .contact-chip:nth-child(1) small', '电话');
+        setText('.hero-contact .contact-chip:nth-child(2) small', '邮箱');
+        setText('.hero-contact .contact-chip:nth-child(3) small', '微信');
+        setText('.hero-side .stat:nth-of-type(2) small', '教育背景');
+        setText('.hero-side .stat:nth-of-type(2) strong', '悉尼大学');
+        setText('.hero-side .stat:nth-of-type(2) div', '交互设计本科 / 交互设计硕士在读');
+        setText('.hero-side .stat:nth-of-type(3) small', '求职方向');
+        setText('.hero-side .stat:nth-of-type(3) strong', '产品经理 / AI产品经理');
+        setText('.hero-side .stat:nth-of-type(3) div', '需求分析、原型设计、测试迭代、产品推进');
+        setText('.hero-side .stat:nth-of-type(4) small', '关键词');
+        ['需求分析', '用户研究', 'Figma', '可用性测试', 'HTML/CSS/JS', 'Python'].forEach(function (text, i) {
+          setText('.hero-side .stat:nth-of-type(4) .tag:nth-child(' + (i + 1) + ')', text);
+        });
+        setText('#about .section-title', '教育背景');
+        setText('#about .item:nth-child(1) h4', '交互设计本科');
+        setText('#about .item:nth-child(1) .meta', '2022 – 2024 · 悉尼大学');
+        setText('#about .item:nth-child(1) li:nth-child(1)', '系统学习 JavaScript、HTML、CSS 与 Adobe 系列工具。');
+        setText('#about .item:nth-child(1) li:nth-child(2)', '重点掌握 Figma、原型搭建、用户测试与迭代方法。');
+        setText('#about .item:nth-child(2) h4', '交互设计硕士（在读）');
+        setText('#about .item:nth-child(2) .meta', '2025 · 悉尼大学');
+        setText('#about .item:nth-child(2) li:nth-child(1)', '进一步深入 UI / UX 体验优化、测试方法与设计改进路径。');
+        setText('#about .item:nth-child(2) li:nth-child(2)', '强化从研究到落地的设计闭环能力。');
+        setText('#strengths .section-title', '核心优势');
+        setText('#strengths .section-desc', '这版简历更适合产品方向，因此我把核心能力集中在需求理解、用户研究、项目推进和产品表达四个层面。');
+        setText('#strengths .strength-card:nth-child(1) h3', '需求分析与问题拆解');
+        setText('#strengths .strength-card:nth-child(1) p', '能够结合用户反馈、竞品分析和项目目标梳理问题优先级，提炼改进方向，并将模糊问题转化为可执行方案。');
+        setText('#strengths .strength-card:nth-child(2) h3', '用户研究与测试迭代');
+        setText('#strengths .strength-card:nth-child(2) p', '熟悉半结构化访谈、情景任务设计、可用性测试、问题归纳与分级，能够基于反馈推动持续迭代。');
+        setText('#strengths .strength-card:nth-child(3) h3', '跨团队推进与产品表达');
+        setText('#strengths .strength-card:nth-child(3) p', '具备任务拆解、版本管理、跨角色沟通和团队协作经验，可使用 Figma 与基础代码能力完成原型表达与快速验证。');
+        setText('#skills .section-title', '技能矩阵');
+        setText('#skills .section-desc', '以产品能力为主轴，同时保留交互设计背景带来的原型、体验与表达优势。');
+        setText('#skills .skill-block:nth-child(1) strong', '产品能力');
+        ['需求分析', '竞品分析', '任务拆解', '版本管理'].forEach(function (text, i) {
+          setText('#skills .skill-block:nth-child(1) span:nth-child(' + (i + 2) + ')', text);
+        });
+        setText('#skills .skill-block:nth-child(2) strong', '用户研究与测试');
+        ['半结构化访谈', '情景任务设计', '可用性测试', '问题分级'].forEach(function (text, i) {
+          setText('#skills .skill-block:nth-child(2) span:nth-child(' + (i + 2) + ')', text);
+        });
+        setText('#skills .skill-block:nth-child(3) strong', '原型与表达');
+        ['Figma', 'Balsamiq', '信息架构', '中高保真原型'].forEach(function (text, i) {
+          setText('#skills .skill-block:nth-child(3) span:nth-child(' + (i + 2) + ')', text);
+        });
+        setText('#skills .skill-block:nth-child(4) strong', '技术与扩展能力');
+        ['HTML', 'CSS', 'JavaScript', 'Python', 'Rhino', 'Fusion 360'].forEach(function (text, i) {
+          setText('#skills .skill-block:nth-child(4) span:nth-child(' + (i + 2) + ')', text);
+        });
+        setText('#experience .section-title', '项目与实习经历');
+        setText('#experience .section-desc', '这些经历共同构成了我向产品岗位转型的基础：既有需求与测试视角，也有团队协作、设计表达与执行落地经验。');
+        setText('#experience .item:nth-child(1) .meta', '实习经历');
+        setText('#experience .item:nth-child(1) h4', '达实智能研发部 UI组｜UI设计实习');
+        setText('#experience .item:nth-child(1) li:nth-child(1)', '参与部分产品的 UI 设计工作，理解真实业务场景中的设计需求。');
+        setText('#experience .item:nth-child(1) li:nth-child(2)', '学习系统性记录并协调其他部门提出的要求，转化为对应的界面方案。');
+        setText('#experience .item:nth-child(1) li:nth-child(3)', '积累了在企业环境中与不同角色协作推进设计任务的实际经验。');
+        setText('#experience .item:nth-child(2) .meta', '校内项目');
+        setText('#experience .item:nth-child(2) h4', '专注度提升项目｜产品体验 / 项目管理');
+        setText('#experience .item:nth-child(2) li:nth-child(1)', '牵头需求澄清与竞品分析，制定测试任务与评估指标，安排招募与测试排期。');
+        setText('#experience .item:nth-child(2) li:nth-child(2)', '基于用户反馈迭代信息层级与交互节奏，优化任务完成路径与可达性。');
+        setText('#experience .item:nth-child(2) li:nth-child(3)', '组织评审与版本节奏，协调设计、研发与干系人共识，支持上线准备。');
+        setText('#experience .item:nth-child(3) .meta', '校内 / 校外项目');
+        setText('#experience .item:nth-child(3) h4', '节水快闪活动 / 纪录片摄制｜综合协作经验');
+        setText('#experience .item:nth-child(3) li:nth-child(1)', '在节水快闪活动中负责研究、测试、信息架构与交互流程设计，并承担团队推进职责。');
+        setText('#experience .item:nth-child(3) li:nth-child(2)', '在纪录片摄制中完成分镜、机位调度与后期流程对接，提升跨团队协同能力。');
+        setText('#experience .item:nth-child(3) li:nth-child(3)', '这些经历强化了我在复杂项目中处理需求、沟通与执行的综合能力。');
+        setText('#projects .section-title', '代表项目');
+        setText('#projects .section-desc', '以下内容基于作品集整理，重点展示我在需求理解、研究测试、原型表达与跨团队推进中的具体能力。');
+        setAttr('#projects .project-card:nth-child(1) .cover', 'alt', '项目一封面图');
+        setText('#projects .project-card:nth-child(1) h3', '项目一｜专注度提升 / 外卖场景 UI 设计');
+        setText('#projects .project-card:nth-child(1) .project-top p', '独立完成从背景调查、用户调研到两轮用户测试与最终 UI 迭代的校内项目。');
+        setText('#projects .project-card:nth-child(1) .bullet-list li:nth-child(1)', '以背景调查与用户研究为起点，建立中保真框架与整体信息架构。');
+        setText('#projects .project-card:nth-child(1) .bullet-list li:nth-child(2)', '采用 Think Aloud、SUS、Post-test Interview 等方法进行多轮测试。');
+        setText('#projects .project-card:nth-child(1) .bullet-list li:nth-child(3)', '基于亲和图（Affinity Diagram）与测试反馈进行问题归纳与版本迭代。');
+        setText('#projects .project-card:nth-child(1) .bullet-list li:nth-child(4)', '从起始页、主界面到商家界面，持续优化新手引导、筛选效率与理解成本。');
+        setText('#projects .project-card:nth-child(1) .bullet-list li:nth-child(5)', '最终形成完整 UI 配色体系与交互逻辑，提升易学性与可用性。');
+        ['独立完成', '用户测试', '亲和图分析', '中保真到最终 UI'].forEach(function (text, i) {
+          setText('#projects .project-card:nth-child(1) .tag:nth-child(' + (i + 1) + ')', text);
+        });
+        setAttr('#projects .project-card:nth-child(2) .cover', 'alt', '项目二封面图');
+        setText('#projects .project-card:nth-child(2) h3', '项目二｜节水主题快闪活动 UI / UX 设计');
+        setText('#projects .project-card:nth-child(2) .project-top p', '四人小组合作项目，负责研究方向、用户调研方法制定，并参与完整 UI / UX 设计，3D 建模独立完成。');
+        setText('#projects .project-card:nth-child(2) .bullet-list li:nth-child(1)', '围绕节水主题进行早期调研、概念生成、原型设计与两轮用户测试。');
+        setText('#projects .project-card:nth-child(2) .bullet-list li:nth-child(2)', '设计互动式快闪装置与信息展示逻辑，结合 LED、奖励模块与问答页面强化参与感。');
+        setText('#projects .project-card:nth-child(2) .bullet-list li:nth-child(3)', '通过 Think Aloud、Observation、Post-test Interview、Heuristic Evaluation 等方法优化流程。');
+        setText('#projects .project-card:nth-child(2) .bullet-list li:nth-child(4)', '迭代后的最终原型适用于快闪活动现场，兼顾互动者与围观者的观看体验。');
+        setText('#projects .project-card:nth-child(2) .bullet-list li:nth-child(5)', '具备 UI 视觉、交互路径、实体装置与 3D 建模的复合设计能力。');
+        ['团队协作', '活动体验设计', '3D 建模', '原型迭代'].forEach(function (text, i) {
+          setText('#projects .project-card:nth-child(2) .tag:nth-child(' + (i + 1) + ')', text);
+        });
+        setAttr('#projects .project-card--feature .cover', 'aria-label', '项目三封面图');
+        setText('#projects .project-card--feature h3', '项目三｜疫情背景下的社交媒体数据叙事网页');
+        setText('#projects .project-card--feature .project-top p', '围绕 COVID-19 时期社交媒体使用、负面话语扩散与仇恨犯罪影响制作的长滚动数据可视化网页。');
+        setText('#projects .project-card--feature .bullet-list li:nth-child(1)', '以专题叙事结构组织信息，从引言、树图到地图与折线图逐步展开研究结论。');
+        setText('#projects .project-card--feature .bullet-list li:nth-child(2)', '使用固定侧边导航帮助用户在长页面中快速定位不同图表章节。');
+        setText('#projects .project-card--feature .bullet-list li:nth-child(3)', '通过 treemap、全球增长地图与英格兰仇恨犯罪折线图串联“使用增长—负面传播—社会影响”的逻辑。');
+        setText('#projects .project-card--feature .bullet-list li:nth-child(4)', '整体视觉采用深色背景与酒红色渐变，强化疫情语境下的沉浸感与信息密度。');
+        setText('#projects .project-card--feature .bullet-list li:nth-child(5)', '适合作为“数据可视化 + 网页叙事表达”方向的代表作品展示。');
+        ['数据可视化', '专题网页', '交互叙事', '信息设计'].forEach(function (text, i) {
+          setText('#projects .project-card--feature .tag:nth-child(' + (i + 1) + ')', text);
+        });
+        document.querySelectorAll('.project-open-btn').forEach(function (btn) {
+          btn.textContent = '查看详细作品';
+        });
+        if (template1) template1.innerHTML = zhState.template1;
+        if (template2) template2.innerHTML = zhState.template2;
+        if (template3) template3.innerHTML = zhState.template3;
+        setAttr('#project-modal', 'aria-label', '作品详情');
+        setAttr('.project-modal__close', 'aria-label', '关闭');
+        setText('footer.footer', '王淙立的个人网站');
+      }
 
       document.querySelectorAll('.reveal-group').forEach(function (group) {
         group.querySelectorAll('.reveal').forEach(function (el, i) {
@@ -2006,6 +2524,17 @@
         progressBar.style.width = Math.max(0, Math.min(progress, 100)) + '%';
       }
 
+      function syncOpenModalContent() {
+        const modalContent = document.getElementById('project-modal-content');
+        if (!modal?.classList.contains('is-open') || !modalContent) return;
+        const currentId = modalContent.querySelector('.modal-project__index')?.textContent?.trim();
+        const currentTemplate = currentId && document.getElementById('project-detail-template-' + currentId);
+        if (currentTemplate) {
+          modalContent.replaceChildren();
+          modalContent.appendChild(currentTemplate.content.cloneNode(true));
+        }
+      }
+
       let navTick = false;
       function requestNavUpdate() {
         if (navTick) return;
@@ -2021,6 +2550,34 @@
       window.addEventListener('resize', requestNavUpdate);
       updateNavFromScroll();
       updateScrollProgress();
+
+      const savedLanguage = (function () {
+        try {
+          return localStorage.getItem('site-language') || 'zh';
+        } catch (err) {
+          return 'zh';
+        }
+      })();
+
+      if (savedLanguage === 'en') {
+        applyEnglish();
+        syncOpenModalContent();
+      } else {
+        restoreChinese();
+      }
+
+      langToggle?.addEventListener('click', function () {
+        const nextLang = langToggle.dataset.lang === 'en' ? 'zh' : 'en';
+        if (nextLang === 'en') {
+          applyEnglish();
+        } else {
+          restoreChinese();
+        }
+        syncOpenModalContent();
+        try {
+          localStorage.setItem('site-language', nextLang);
+        } catch (err) {}
+      });
 
       navLinks.forEach(function (link) {
         link.addEventListener('mouseenter', function () {
