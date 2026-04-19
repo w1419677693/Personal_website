@@ -2551,11 +2551,11 @@
       updateNavFromScroll();
       updateScrollProgress();
 
-      const savedLanguage = en (function () {
+      const savedLanguage = (function () {
         try {
           return localStorage.getItem('site-language') || 'zh';
         } catch (err) {
-          return 'zh';
+          return 'en';
         }
       })();
 
