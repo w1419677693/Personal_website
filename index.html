@@ -1447,6 +1447,53 @@
       .hero-grid, .grid-2, .grid-3, .skills, .hero-contact, .strengths, .timeline, .projects-grid {
         grid-template-columns: 1fr;
       }
+      .ambient-bg {
+        position: absolute;
+        inset: 0;
+        min-height: 100%;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 20% 18%, rgba(86, 224, 255, 0.16), transparent 34%),
+          radial-gradient(circle at 78% 14%, rgba(167, 107, 255, 0.15), transparent 30%),
+          linear-gradient(180deg, #02050c 0%, #07111f 42%, #081733 72%, #050b17 100%);
+      }
+      .ambient-bg__aurora,
+      .ambient-bg__beams,
+      .ambient-bg__mesh,
+      .ambient-bg__scanlines,
+      .ambient-bg__noise {
+        display: none;
+      }
+      .ambient-bg__grad,
+      .ambient-bg__blob {
+        animation: none !important;
+        filter: none;
+        mix-blend-mode: normal;
+      }
+      .ambient-bg__grad {
+        inset: 0;
+        opacity: 0.72;
+      }
+      .ambient-bg__blobs {
+        inset: 0;
+      }
+      .ambient-bg__blob {
+        opacity: 0.18;
+      }
+      .ambient-bg__blob--a,
+      .ambient-bg__blob--b,
+      .ambient-bg__blob--c {
+        width: 58vw;
+        height: 58vw;
+      }
+      .nav {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(4, 10, 19, 0.9);
+      }
+      .nav.is-scrolled {
+        background: rgba(4, 10, 19, 0.94);
+      }
       .project-card--feature {
         grid-template-columns: 1fr;
       }
@@ -1466,6 +1513,11 @@
     }
 
     @media (hover: none), (pointer: coarse) {
+      .ambient-bg,
+      .ambient-bg__grad,
+      .ambient-bg__blob {
+        transform: none !important;
+      }
       .card:hover,
       .item:hover,
       .strength-card:hover,
