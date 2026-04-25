@@ -18,132 +18,6 @@
 
     * { box-sizing: border-box; }
 
-    @keyframes bgPulse {
-      0% {
-        transform: scale(1) translate3d(-1%, -1%, 0);
-        filter: hue-rotate(0deg) saturate(120%);
-      }
-      50% {
-        transform: scale(1.08) translate3d(2%, 1%, 0);
-        filter: hue-rotate(10deg) saturate(138%);
-      }
-      100% {
-        transform: scale(1.14) translate3d(-2%, 2%, 0);
-        filter: hue-rotate(-8deg) saturate(126%);
-      }
-    }
-
-    @keyframes auroraSweep {
-      0% {
-        transform: translate3d(-18%, -8%, 0) rotate(-9deg) scale(0.92);
-        opacity: 0.46;
-      }
-      50% {
-        transform: translate3d(6%, 4%, 0) rotate(1deg) scale(1.08);
-        opacity: 0.82;
-      }
-      100% {
-        transform: translate3d(18%, 14%, 0) rotate(10deg) scale(1.2);
-        opacity: 0.58;
-      }
-    }
-
-    @keyframes auroraSweepAlt {
-      0% {
-        transform: translate3d(18%, -10%, 0) rotate(12deg) scale(0.96);
-        opacity: 0.28;
-      }
-      50% {
-        transform: translate3d(-2%, 4%, 0) rotate(2deg) scale(1.08);
-        opacity: 0.72;
-      }
-      100% {
-        transform: translate3d(-20%, 18%, 0) rotate(-10deg) scale(1.24);
-        opacity: 0.4;
-      }
-    }
-
-    @keyframes orbFloat {
-      0% {
-        transform: translate3d(0, 0, 0) scale(0.92);
-      }
-      35% {
-        transform: translate3d(8%, -10%, 0) scale(1.08);
-      }
-      70% {
-        transform: translate3d(-6%, 8%, 0) scale(1.16);
-      }
-      100% {
-        transform: translate3d(10%, 16%, 0) scale(1.02);
-      }
-    }
-
-    @keyframes orbFloatAlt {
-      0% {
-        transform: translate3d(0, 0, 0) scale(0.94);
-      }
-      40% {
-        transform: translate3d(-12%, 8%, 0) scale(1.1);
-      }
-      75% {
-        transform: translate3d(10%, -6%, 0) scale(1.18);
-      }
-      100% {
-        transform: translate3d(-8%, -14%, 0) scale(1);
-      }
-    }
-
-    @keyframes beamRotate {
-      0% {
-        transform: translate3d(-6%, -4%, 0) rotate(0deg) scale(0.96);
-        opacity: 0.22;
-      }
-      50% {
-        transform: translate3d(4%, 2%, 0) rotate(180deg) scale(1.08);
-        opacity: 0.46;
-      }
-      100% {
-        transform: translate3d(-2%, 6%, 0) rotate(360deg) scale(1.14);
-        opacity: 0.26;
-      }
-    }
-
-    @keyframes meshShift {
-      0% {
-        transform: translate3d(0, 0, 0) scale(1);
-        opacity: 0.2;
-        background-position: 0 0, 0 0, 0 0;
-      }
-      100% {
-        transform: translate3d(2%, 3%, 0) scale(1.06);
-        opacity: 0.42;
-        background-position: 140px 96px, -120px 72px, 0 22px;
-      }
-    }
-
-    @keyframes scanlineDrift {
-      0% {
-        transform: translateY(-16%);
-        opacity: 0.12;
-      }
-      50% {
-        opacity: 0.28;
-      }
-      100% {
-        transform: translateY(16%);
-        opacity: 0.16;
-      }
-    }
-
-    @keyframes sparkDrift {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-      100% {
-        transform: translate3d(-120px, -180px, 0);
-      }
-    }
-
     @keyframes heroGlow {
       0%, 100% { opacity: 0.32; transform: scale(1); }
       50% { opacity: 0.52; transform: scale(1.06); }
@@ -248,146 +122,6 @@
      * 动效背景放在 body 内的固定层，避免此前 body { z-index: 1 } 整块盖住 html::before/::after
      * 导致部分浏览器里完全看不到渐变动画的问题。
      */
-    .ambient-bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      overflow: hidden;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at top, rgba(10, 28, 62, 0.38), transparent 48%),
-        linear-gradient(180deg, #02050c 0%, #07111f 42%, #081733 72%, #050b17 100%);
-    }
-
-    .ambient-bg__grad {
-      position: absolute;
-      inset: -14%;
-      background:
-        radial-gradient(circle at 18% 22%, rgba(86, 224, 255, 0.42) 0%, rgba(86, 224, 255, 0.16) 18%, transparent 36%),
-        radial-gradient(circle at 82% 12%, rgba(167, 107, 255, 0.34) 0%, rgba(167, 107, 255, 0.12) 22%, transparent 38%),
-        radial-gradient(circle at 56% 82%, rgba(106, 141, 255, 0.32) 0%, rgba(106, 141, 255, 0.1) 24%, transparent 42%),
-        conic-gradient(from 180deg at 50% 50%, rgba(86, 224, 255, 0.12), rgba(106, 141, 255, 0.08), rgba(167, 107, 255, 0.12), rgba(86, 224, 255, 0.1), rgba(86, 224, 255, 0.12));
-      filter: blur(10px) saturate(140%) contrast(116%);
-      transform-origin: center;
-      animation: bgPulse 16s var(--ease-silk) infinite alternate;
-    }
-
-    .ambient-bg__aurora {
-      position: absolute;
-      inset: -18%;
-      filter: blur(18px);
-      mix-blend-mode: screen;
-      opacity: 0.92;
-    }
-
-    .ambient-bg__aurora::before,
-    .ambient-bg__aurora::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 42%;
-      background:
-        linear-gradient(110deg, transparent 16%, rgba(86, 224, 255, 0.08) 26%, rgba(86, 224, 255, 0.3) 34%, rgba(106, 141, 255, 0.16) 44%, transparent 58%),
-        linear-gradient(132deg, transparent 32%, rgba(167, 107, 255, 0.08) 40%, rgba(167, 107, 255, 0.3) 52%, rgba(125, 255, 207, 0.14) 66%, transparent 78%);
-    }
-
-    .ambient-bg__aurora::before {
-      animation: auroraSweep 14s var(--ease-silk-alt) infinite alternate;
-    }
-
-    .ambient-bg__aurora::after {
-      animation: auroraSweepAlt 18s var(--ease-silk) infinite alternate-reverse;
-    }
-
-    .ambient-bg__blobs {
-      position: absolute;
-      inset: -14%;
-      overflow: hidden;
-    }
-
-    .ambient-bg__blob {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(92px);
-      mix-blend-mode: screen;
-      opacity: 0.98;
-      will-change: transform;
-    }
-
-    .ambient-bg__blob--a {
-      width: min(92vw, 920px);
-      height: min(92vw, 920px);
-      left: -18%;
-      top: -12%;
-      background: radial-gradient(circle at 50% 50%, rgba(86, 224, 255, 0.76) 0%, rgba(86, 224, 255, 0.32) 26%, rgba(30, 120, 170, 0.12) 46%, transparent 70%);
-      animation: orbFloat 11s var(--ease-silk-alt) infinite alternate;
-    }
-
-    .ambient-bg__blob--b {
-      width: min(88vw, 860px);
-      height: min(88vw, 860px);
-      right: -18%;
-      top: -8%;
-      background: radial-gradient(circle at 50% 50%, rgba(167, 107, 255, 0.72) 0%, rgba(167, 107, 255, 0.28) 28%, rgba(110, 60, 170, 0.11) 48%, transparent 72%);
-      animation: orbFloatAlt 13s var(--ease-silk) infinite alternate;
-    }
-
-    .ambient-bg__blob--c {
-      width: min(98vw, 980px);
-      height: min(98vw, 980px);
-      left: 8%;
-      bottom: -34%;
-      background: radial-gradient(circle at 50% 50%, rgba(106, 141, 255, 0.62) 0%, rgba(125, 255, 207, 0.28) 30%, rgba(60, 100, 150, 0.08) 48%, transparent 72%);
-      animation: orbFloat 15s cubic-bezier(0.33, 0, 0.67, 1) infinite alternate-reverse;
-    }
-
-    .ambient-bg__beams {
-      position: absolute;
-      inset: -22%;
-      background:
-        conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(86, 224, 255, 0.18) 36deg, transparent 72deg, transparent 138deg, rgba(167, 107, 255, 0.18) 188deg, transparent 232deg, rgba(125, 255, 207, 0.14) 280deg, transparent 324deg, rgba(86, 224, 255, 0.18) 360deg);
-      filter: blur(10px);
-      mix-blend-mode: screen;
-      animation: beamRotate 22s linear infinite;
-      transform-origin: center;
-    }
-
-    .ambient-bg__mesh {
-      position: absolute;
-      inset: -6%;
-      background:
-        linear-gradient(rgba(86, 224, 255, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(106, 141, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(180deg, transparent 0%, rgba(167, 107, 255, 0.08) 46%, transparent 100%);
-      background-size: 120px 120px, 120px 120px, 100% 100%;
-      mask-image: radial-gradient(circle at center, black 56%, transparent 100%);
-      animation: meshShift 20s var(--ease-silk) infinite alternate;
-    }
-
-    .ambient-bg__scanlines {
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 16px),
-        linear-gradient(180deg, transparent 0%, rgba(86, 224, 255, 0.08) 42%, rgba(167, 107, 255, 0.06) 58%, transparent 100%);
-      mix-blend-mode: screen;
-      animation: scanlineDrift 10s linear infinite alternate;
-    }
-
-    .ambient-bg__noise {
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.12) 0 1px, transparent 1.2px),
-        radial-gradient(circle at 80% 20%, rgba(86, 224, 255, 0.16) 0 1px, transparent 1.2px),
-        radial-gradient(circle at 30% 78%, rgba(167, 107, 255, 0.12) 0 1px, transparent 1.2px),
-        radial-gradient(circle at 72% 68%, rgba(125, 255, 207, 0.14) 0 1px, transparent 1.2px);
-      background-size: 240px 240px, 320px 320px, 280px 280px, 360px 360px;
-      opacity: 0.4;
-      animation: sparkDrift 24s linear infinite;
-    }
-
     body {
       margin: 0;
       font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -397,7 +131,7 @@
       overflow-x: hidden;
     }
 
-    /* 主内容叠在 .ambient-bg（z-index:0）之上；导航仍用原有 z-index:30 */
+    /* 主内容叠在固定背景层之上；导航仍用原有 z-index:30 */
     body > header,
     body > main,
     body > footer {
@@ -1363,14 +1097,6 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .ambient-bg__grad,
-      .ambient-bg__aurora::before,
-      .ambient-bg__aurora::after,
-      .ambient-bg__mesh,
-      .ambient-bg__scanlines,
-      .ambient-bg__beams,
-      .ambient-bg__noise,
-      .ambient-bg__blob,
       .hero::before,
       .logo-badge,
       .scroll-progress-bar::after,
@@ -1379,9 +1105,6 @@
       .hero-contact .contact-chip::after,
       .project-modal.is-open .modal-project > * {
         animation: none !important;
-      }
-      .ambient-bg__blob {
-        opacity: 0.28;
       }
       .project-modal,
       .project-modal__backdrop,
@@ -1533,45 +1256,6 @@
       .hero-grid, .grid-2, .grid-3, .skills, .hero-contact, .strengths, .timeline, .projects-grid {
         grid-template-columns: 1fr;
       }
-      .ambient-bg {
-        position: absolute;
-        inset: 0;
-        min-height: 100%;
-        overflow: hidden;
-        background:
-          radial-gradient(circle at 20% 18%, rgba(86, 224, 255, 0.16), transparent 34%),
-          radial-gradient(circle at 78% 14%, rgba(167, 107, 255, 0.15), transparent 30%),
-          linear-gradient(180deg, #02050c 0%, #07111f 42%, #081733 72%, #050b17 100%);
-      }
-      .ambient-bg__aurora,
-      .ambient-bg__beams,
-      .ambient-bg__mesh,
-      .ambient-bg__scanlines,
-      .ambient-bg__noise {
-        display: none;
-      }
-      .ambient-bg__grad,
-      .ambient-bg__blob {
-        animation: none !important;
-        filter: none;
-        mix-blend-mode: normal;
-      }
-      .ambient-bg__grad {
-        inset: 0;
-        opacity: 0.72;
-      }
-      .ambient-bg__blobs {
-        inset: 0;
-      }
-      .ambient-bg__blob {
-        opacity: 0.18;
-      }
-      .ambient-bg__blob--a,
-      .ambient-bg__blob--b,
-      .ambient-bg__blob--c {
-        width: 58vw;
-        height: 58vw;
-      }
       .nav {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
@@ -1611,11 +1295,6 @@
     }
 
     @media (hover: none), (pointer: coarse) {
-      .ambient-bg,
-      .ambient-bg__grad,
-      .ambient-bg__blob {
-        transform: none !important;
-      }
       .card:hover,
       .item:hover,
       .strength-card:hover,
