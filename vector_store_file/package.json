@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test:openai": "node test-openai.mjs"
+  },
+  "dependencies": {
+    "openai": "^6.34.0"
+  }
+}

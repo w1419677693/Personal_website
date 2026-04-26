@@ -18,6 +18,7 @@
         <span class="nav-indicator" aria-hidden="true"></span>
         <a href="#about" data-nav-section="about">教育背景</a>
         <a href="#strengths" data-nav-section="strengths">核心优势</a>
+        <a href="#avatar-ai" data-nav-section="avatar-ai">AI分身</a>
         <a href="#skills" data-nav-section="skills">技能</a>
         <a href="#experience" data-nav-section="experience">项目经验</a>
         <a href="#projects" data-nav-section="projects">作品集</a>
@@ -143,6 +144,94 @@
           <div class="strength-card reveal">
             <h3>跨团队推进与产品表达</h3>
             <p>具备任务拆解、版本管理、跨角色沟通和团队协作经验，可使用 Figma 与基础代码能力完成原型表达与快速验证。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="avatar-ai">
+      <div class="card ai-section reveal-group">
+        <div class="ai-section__intro reveal">
+          <div>
+            <div class="eyebrow ai-eyebrow">AI Persona</div>
+            <h2 class="section-title ai-title">和我的 AI 分身聊聊</h2>
+          </div>
+          <p class="section-desc ai-desc">
+            这个分身基于我的简历、项目经历和求职方向整理而成，适合快速回答“我是谁、做过什么、擅长什么、为什么适合产品岗位”这类问题。
+          </p>
+        </div>
+
+        <div class="ai-grid">
+          <aside class="ai-profile reveal">
+            <div class="ai-profile__media">
+              <img src="./site-assets/avatar.png" alt="AI 分身头像" class="ai-profile__avatar" />
+              <div class="ai-profile__halo" aria-hidden="true"></div>
+            </div>
+            <div class="ai-profile__body">
+              <p class="ai-profile__label">Digital Introduction</p>
+              <h3 class="ai-profile__name">王聪立 · AI 分身</h3>
+              <p class="ai-profile__summary">
+                你好，我会用更像“本人介绍自己”的方式，回答教育背景、项目经历、产品能力、研究方法和求职方向相关的问题。
+              </p>
+              <div class="ai-profile__stats">
+                <div class="ai-mini-stat">
+                  <small>聚焦方向</small>
+                  <strong>产品 / AI 产品</strong>
+                </div>
+                <div class="ai-mini-stat">
+                  <small>回答依据</small>
+                  <strong>简历 + 作品集</strong>
+                </div>
+                <div class="ai-mini-stat">
+                  <small>回答风格</small>
+                  <strong>简洁、真实、可面试化</strong>
+                </div>
+              </div>
+              <div class="ai-profile__notes">
+                <span class="tag">只回答与我相关的问题</span>
+                <span class="tag">不虚构履历</span>
+                <span class="tag">支持中英切换</span>
+              </div>
+            </div>
+          </aside>
+
+          <div class="ai-console reveal">
+            <div class="ai-console__head">
+              <div>
+                <h3 class="ai-console__title">AI 分身问答台</h3>
+                <p class="ai-console__sub">你可以直接点击问题，也可以自己输入。</p>
+              </div>
+              <span class="ai-console__status">Profile-grounded</span>
+            </div>
+
+            <div class="ai-suggestions" id="aiSuggestions">
+              <button class="ai-suggestion" type="button" data-question="请你简单介绍一下自己">请你简单介绍一下自己</button>
+              <button class="ai-suggestion" type="button" data-question="你为什么想做产品经理">你为什么想做产品经理</button>
+              <button class="ai-suggestion" type="button" data-question="你做过哪些代表项目">你做过哪些代表项目</button>
+              <button class="ai-suggestion" type="button" data-question="你的核心优势是什么">你的核心优势是什么</button>
+            </div>
+
+            <div class="ai-chat" id="aiChat" aria-live="polite">
+              <article class="ai-message ai-message--bot">
+                <div class="ai-message__avatar">AI</div>
+                <div class="ai-message__bubble">
+                  你好，我是王聪立的 AI 分身。你可以问我教育背景、项目经验、技能结构、产品思维，或者为什么我适合产品经理 / AI 产品经理岗位。
+                </div>
+              </article>
+            </div>
+
+            <form class="ai-input" id="aiForm">
+              <label class="sr-only" for="aiQuestionInput">输入你的问题</label>
+              <input
+                id="aiQuestionInput"
+                name="question"
+                type="text"
+                maxlength="160"
+                placeholder="例如：你在项目里通常负责什么？"
+                autocomplete="off"
+              />
+              <button class="btn btn-primary" type="submit">发送问题</button>
+            </form>
           </div>
         </div>
       </div>
@@ -561,5 +650,7 @@
     王淙立的个人网站
   </footer>
   <script src="./script.js"></script>
+  <script src="./encoding-fix.js"></script>
+  <script src="./ai-avatar.js"></script>
 </body>
 </html>

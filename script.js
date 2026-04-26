@@ -68,6 +68,171 @@
     })();
 
     (function () {
+      const chat = document.getElementById('aiChat');
+      const form = document.getElementById('aiForm');
+      const input = document.getElementById('aiQuestionInput');
+      const suggestions = document.getElementById('aiSuggestions');
+      if (!chat || !form || !input || !suggestions) return;
+
+      const copy = {
+        zh: {
+          welcome: '你好，我是王聪立的 AI 分身。你可以问我教育背景、项目经验、技能结构、产品思维，或者为什么我适合产品经理 / AI 产品经理岗位。',
+          empty: '可以直接问我一个和王聪立相关的问题，比如“你的核心优势是什么？”',
+          fallback: '这个问题如果继续展开，我也只会基于现有简历和作品集来回答。你可以换个角度问我，比如教育背景、项目经历、研究方法、技能结构，或者为什么适合产品岗位。',
+          typing: '正在整理回答…'
+        },
+        en: {
+          welcome: 'Hi, I am Congli Wang\'s AI persona. Ask me about education, projects, skills, product thinking, or why I fit product manager and AI product manager roles.',
+          empty: 'Ask me something profile-related, such as "What are your core strengths?"',
+          fallback: 'I can only answer based on the current resume and portfolio. Try asking about education, projects, research methods, skill set, or product-role fit.',
+          typing: 'Thinking...'
+        }
+      };
+
+      const knowledge = {
+        zh: [
+          {
+            keys: ['介绍', '你是谁', '简单介绍', '自我介绍', 'about yourself'],
+            answer: '我是王聪立，目前的求职方向是产品经理和 AI 产品经理。本科是悉尼大学交互设计，硕士也继续在悉尼大学读交互设计。我的经历横跨用户研究、需求分析、原型设计、可用性测试和跨团队协作，也能用 Figma、HTML、CSS、JavaScript 和 Python 做快速表达与验证。'
+          },
+          {
+            keys: ['为什么', '产品经理', 'product manager', '求职方向', '转产品'],
+            answer: '我想做产品经理，是因为我最有优势的部分刚好落在“理解问题并推动解决”这条链路上。我会从用户问题出发，结合竞品分析、测试反馈和项目目标梳理优先级，再把模糊需求转成原型、流程和可执行方案。交互设计背景也让我更擅长把想法落成可被验证的产品表达。'
+          },
+          {
+            keys: ['项目', '代表项目', '作品', 'portfolio', 'case study'],
+            answer: '我有三个比较能代表自己的项目。第一是专注度提升 / 外卖场景 UI 设计，我独立完成了从背景研究、用户研究到两轮测试和最终 UI 迭代。第二是节水主题快闪活动 UI / UX 设计，这是团队项目，我负责研究方向、用户测试方法，并独立完成 3D 建模。第三是疫情背景下的社交媒体数据叙事网页，重点体现我在网页表达、信息架构和数据可视化叙事方面的能力。'
+          },
+          {
+            keys: ['优势', '核心能力', '长处', 'strength'],
+            answer: '我的核心优势主要有三块。第一是需求分析和问题拆解，能把模糊问题转成清晰的任务和优先级。第二是用户研究与测试迭代，熟悉半结构化访谈、情景任务、Think Aloud、SUS 和测试后的问题归纳。第三是跨团队推进和产品表达，既能和不同角色沟通，也能用 Figma 或代码快速做出可验证的方案。'
+          },
+          {
+            keys: ['教育', '学校', '大学', '硕士', '本科', 'education'],
+            answer: '我的教育背景来自悉尼大学。本科阶段学习交互设计，系统接触了 JavaScript、HTML、CSS 和 Adobe 工具，也重点训练了 Figma、原型搭建、用户测试和迭代方法。现在继续攻读交互设计硕士，进一步加强从研究到落地的完整设计闭环。'
+          },
+          {
+            keys: ['技能', '会什么', 'tool', 'stack', 'figma', 'python', 'html', 'css', 'javascript'],
+            answer: '我的技能结构可以分成四层。产品能力上包括需求分析、竞品分析、任务拆解和版本管理；研究与测试上包括访谈、情景任务设计和可用性测试；表达层面我熟悉 Figma、Axure、MasterGo、Balsamiq；技术上我会 HTML、CSS、JavaScript、Python，也接触过 RAG、Finetuning、Rhino 和 Fusion 360。'
+          },
+          {
+            keys: ['负责', '角色', '贡献', 'owner', 'ownership'],
+            answer: '我在项目里通常会承担前期问题梳理、研究设计、测试安排、信息架构梳理，以及把思路落成原型这几类工作。对独立项目，我能完整走完研究、原型、测试和迭代；对团队项目，我更像连接研究、设计表达和推进节奏的人。'
+          },
+          {
+            keys: ['ai', '人工智能', 'rag', 'finetuning'],
+            answer: '我对 AI 产品方向感兴趣，不只是因为技术新，而是因为它很适合和我的能力结构结合。我既有用户研究和产品表达背景，也在接触 RAG、Finetuning、技能文档编写这类方向，所以我希望往 AI 产品经理方向继续发展，把技术能力和真实用户场景连接起来。'
+          }
+        ],
+        en: [
+          {
+            keys: ['introduce', 'who are you', 'about yourself', 'briefly'],
+            answer: 'I am Congli Wang, currently targeting product manager and AI product manager roles. I studied Interaction Design at the University of Sydney and continue there for graduate study. My experience spans user research, requirement analysis, prototyping, usability testing, and cross-functional collaboration, and I can also use Figma, HTML, CSS, JavaScript, and Python to validate ideas quickly.'
+          },
+          {
+            keys: ['why', 'product manager', 'career direction', 'transition'],
+            answer: 'I want to be a product manager because my strengths sit right in the chain of understanding problems and driving solutions. I start from user issues, combine competitor analysis, testing feedback, and project goals, then turn vague needs into flows, prototypes, and practical plans. My interaction design background also helps me express ideas in a testable way.'
+          },
+          {
+            keys: ['project', 'portfolio', 'case study', 'representative'],
+            answer: 'Three projects represent me well. The first is a focus-improvement / food-delivery UI project that I completed independently from research through two rounds of testing and final UI iteration. The second is a water-saving pop-up UI/UX project where I shaped the research direction and testing method and independently handled the 3D modeling. The third is a COVID-era social media data storytelling webpage that highlights my skills in web expression, information architecture, and narrative visualization.'
+          },
+          {
+            keys: ['strength', 'core strength', 'advantage'],
+            answer: 'My core strengths fall into three areas. First, requirement analysis and problem structuring: I can turn vague issues into prioritized action points. Second, research and iterative testing: I am comfortable with semi-structured interviews, scenario tasks, Think Aloud, SUS, and issue synthesis. Third, cross-team delivery and product communication: I can coordinate across roles and use both Figma and code to express solutions quickly.'
+          },
+          {
+            keys: ['education', 'school', 'university', 'master', 'bachelor'],
+            answer: 'My academic background is from the University of Sydney. During my bachelor study in Interaction Design, I built foundations in JavaScript, HTML, CSS, Adobe tools, Figma, prototyping, and user testing. I am now continuing with graduate study in Interaction Design to strengthen the full loop from research to implementation.'
+          },
+          {
+            keys: ['skill', 'tools', 'stack', 'figma', 'python', 'html', 'css', 'javascript'],
+            answer: 'My skills have four layers. Product skills include requirement analysis, competitor analysis, task breakdown, and version planning. Research skills include interviews, scenario task design, and usability testing. For expression, I use Figma, Axure, MasterGo, and Balsamiq. On the technical side, I work with HTML, CSS, JavaScript, Python, and have also explored RAG, finetuning, Rhino, and Fusion 360.'
+          },
+          {
+            keys: ['role', 'responsible', 'contribution', 'own'],
+            answer: 'In projects, I usually own early-stage problem framing, research planning, testing setup, information architecture, and prototype expression. In independent projects, I can carry the whole loop from research to iteration. In team projects, I often act as the bridge between research, design expression, and execution rhythm.'
+          },
+          {
+            keys: ['ai', 'artificial intelligence', 'rag', 'finetuning'],
+            answer: 'I am interested in AI product work not only because the technology is evolving fast, but because it fits my skill mix well. I bring user research and product-expression experience, while also exploring directions such as RAG, finetuning, and skill documentation. That makes AI product roles a natural direction for my growth.'
+          }
+        ]
+      };
+
+      function currentLang() {
+        return document.documentElement.lang === 'en' ? 'en' : 'zh';
+      }
+
+      function appendMessage(role, text) {
+        const message = document.createElement('article');
+        message.className = 'ai-message ai-message--' + role;
+
+        const avatar = document.createElement('div');
+        avatar.className = 'ai-message__avatar';
+        avatar.textContent = role === 'bot' ? 'AI' : (currentLang() === 'en' ? 'You' : '你');
+
+        const bubble = document.createElement('div');
+        bubble.className = 'ai-message__bubble';
+        bubble.textContent = text;
+
+        message.appendChild(avatar);
+        message.appendChild(bubble);
+        chat.appendChild(message);
+        chat.scrollTop = chat.scrollHeight;
+        return message;
+      }
+
+      function findAnswer(question, lang) {
+        const normalized = question.toLowerCase();
+        const matched = knowledge[lang].find(function (entry) {
+          return entry.keys.some(function (key) {
+            return normalized.indexOf(String(key).toLowerCase()) !== -1;
+          });
+        });
+
+        if (matched) return matched.answer;
+        return copy[lang].fallback;
+      }
+
+      function ask(question) {
+        const lang = currentLang();
+        const value = question.trim();
+        if (!value) {
+          appendMessage('bot', copy[lang].empty);
+          return;
+        }
+
+        appendMessage('user', value);
+        const typingMessage = appendMessage('bot', copy[lang].typing);
+
+        window.setTimeout(function () {
+          typingMessage.querySelector('.ai-message__bubble').textContent = findAnswer(value, lang);
+          chat.scrollTop = chat.scrollHeight;
+        }, 420);
+      }
+
+      window.applyAiPersonaLanguage = function (lang) {
+        const welcomeBubble = chat.querySelector('.ai-message--bot .ai-message__bubble');
+        if (welcomeBubble) {
+          welcomeBubble.textContent = copy[lang].welcome;
+        }
+      };
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        ask(input.value);
+        input.value = '';
+      });
+
+      suggestions.addEventListener('click', function (event) {
+        const button = event.target.closest('.ai-suggestion');
+        if (!button) return;
+        ask(button.dataset.question || button.textContent || '');
+      });
+    })();
+
+    (function () {
       function setSkillTexts(texts) {
         var block = document.querySelector('#skills .skill-block:nth-child(3)');
         if (!block) return;
@@ -344,6 +509,7 @@
         }
         setText('.nav-links a[data-nav-section="about"]', 'Education');
         setText('.nav-links a[data-nav-section="strengths"]', 'Strengths');
+        setText('.nav-links a[data-nav-section="avatar-ai"]', 'AI Persona');
         setText('.nav-links a[data-nav-section="skills"]', 'Skills');
         setText('.nav-links a[data-nav-section="experience"]', 'Experience');
         setText('.nav-links a[data-nav-section="projects"]', 'Portfolio');
@@ -369,6 +535,34 @@
         ['Requirement Analysis', 'User Research', 'Figma', 'Usability Testing', 'HTML/CSS/JS', 'Python'].forEach(function (text, i) {
           setText('.hero-side .stat:nth-of-type(4) .tag:nth-child(' + (i + 1) + ')', text);
         });
+        setText('#avatar-ai .ai-title', 'Talk to My AI Persona');
+        setText('#avatar-ai .ai-desc', 'This persona is grounded in my resume, project experience, and target roles. It is designed to answer questions like who I am, what I have done, what I am good at, and why I fit product roles.');
+        setText('#avatar-ai .ai-profile__name', 'Congli Wang · AI Persona');
+        setText('#avatar-ai .ai-profile__summary', 'Hi, I answer questions in a first-person style based on my education, project work, product skills, research methods, and career direction.');
+        setText('#avatar-ai .ai-mini-stat:nth-child(1) small', 'Focus');
+        setText('#avatar-ai .ai-mini-stat:nth-child(1) strong', 'Product / AI Product');
+        setText('#avatar-ai .ai-mini-stat:nth-child(2) small', 'Grounding');
+        setText('#avatar-ai .ai-mini-stat:nth-child(2) strong', 'Resume + Portfolio');
+        setText('#avatar-ai .ai-mini-stat:nth-child(3) small', 'Style');
+        setText('#avatar-ai .ai-mini-stat:nth-child(3) strong', 'Concise, factual, interview-ready');
+        ['Only profile-related questions', 'No fabricated experience', 'Chinese / English supported'].forEach(function (text, i) {
+          setText('#avatar-ai .ai-profile__notes .tag:nth-child(' + (i + 1) + ')', text);
+        });
+        setText('#avatar-ai .ai-console__title', 'AI Q&A Desk');
+        setText('#avatar-ai .ai-console__sub', 'Click a prompt or type your own question.');
+        setText('#avatar-ai .ai-console__status', 'Profile-grounded');
+        ['Introduce yourself briefly', 'Why do you want to be a product manager?', 'What are your representative projects?', 'What are your core strengths?'].forEach(function (text, i) {
+          const btn = document.querySelector('#avatar-ai .ai-suggestion:nth-child(' + (i + 1) + ')');
+          if (btn) {
+            btn.textContent = text;
+            btn.dataset.question = text;
+          }
+        });
+        setText('#avatar-ai .ai-message--bot .ai-message__bubble', 'Hi, I am Congli Wang\'s AI persona. Ask me about education, projects, skills, product thinking, or why I fit product manager and AI product manager roles.');
+        setAttr('#avatar-ai .ai-profile__avatar', 'alt', 'AI persona portrait');
+        setText('#avatar-ai label[for="aiQuestionInput"]', 'Type your question');
+        setAttr('#aiQuestionInput', 'placeholder', 'Example: What do you usually own in a project?');
+        setText('#avatar-ai .ai-input .btn', 'Send');
         setText('#about .section-title', 'Education');
         setText('#about .item:nth-child(1) h4', 'Bachelor of Interaction Design');
         setText('#about .item:nth-child(1) .meta', '2022 – 2024 · University of Sydney');
@@ -528,6 +722,9 @@
         setAttr('#project-modal', 'aria-label', 'Project details');
         setAttr('.project-modal__close', 'aria-label', 'Close');
         setText('footer.footer', 'Congli Wang Personal Website');
+        if (typeof window.applyAiPersonaLanguage === 'function') {
+          window.applyAiPersonaLanguage('en');
+        }
       }
 
       function restoreChinese() {
@@ -540,6 +737,7 @@
         }
         setText('.nav-links a[data-nav-section="about"]', '教育背景');
         setText('.nav-links a[data-nav-section="strengths"]', '核心优势');
+        setText('.nav-links a[data-nav-section="avatar-ai"]', 'AI分身');
         setText('.nav-links a[data-nav-section="skills"]', '技能');
         setText('.nav-links a[data-nav-section="experience"]', '项目经验');
         setText('.nav-links a[data-nav-section="projects"]', '作品集');
@@ -565,6 +763,34 @@
         ['需求分析', '用户研究', 'Figma', '可用性测试', 'HTML/CSS/JS', 'Python'].forEach(function (text, i) {
           setText('.hero-side .stat:nth-of-type(4) .tag:nth-child(' + (i + 1) + ')', text);
         });
+        setText('#avatar-ai .ai-title', '和我的 AI 分身聊聊');
+        setText('#avatar-ai .ai-desc', '这个分身基于我的简历、项目经历和求职方向整理而成，适合快速回答“我是谁、做过什么、擅长什么、为什么适合产品岗位”这类问题。');
+        setText('#avatar-ai .ai-profile__name', '王聪立 · AI 分身');
+        setText('#avatar-ai .ai-profile__summary', '你好，我会用更像“本人介绍自己”的方式，回答教育背景、项目经历、产品能力、研究方法和求职方向相关的问题。');
+        setText('#avatar-ai .ai-mini-stat:nth-child(1) small', '聚焦方向');
+        setText('#avatar-ai .ai-mini-stat:nth-child(1) strong', '产品 / AI 产品');
+        setText('#avatar-ai .ai-mini-stat:nth-child(2) small', '回答依据');
+        setText('#avatar-ai .ai-mini-stat:nth-child(2) strong', '简历 + 作品集');
+        setText('#avatar-ai .ai-mini-stat:nth-child(3) small', '回答风格');
+        setText('#avatar-ai .ai-mini-stat:nth-child(3) strong', '简洁、真实、可面试化');
+        ['只回答与我相关的问题', '不虚构履历', '支持中英切换'].forEach(function (text, i) {
+          setText('#avatar-ai .ai-profile__notes .tag:nth-child(' + (i + 1) + ')', text);
+        });
+        setText('#avatar-ai .ai-console__title', 'AI 分身问答台');
+        setText('#avatar-ai .ai-console__sub', '你可以直接点击问题，也可以自己输入。');
+        setText('#avatar-ai .ai-console__status', 'Profile-grounded');
+        ['请你简单介绍一下自己', '你为什么想做产品经理', '你做过哪些代表项目', '你的核心优势是什么'].forEach(function (text, i) {
+          const btn = document.querySelector('#avatar-ai .ai-suggestion:nth-child(' + (i + 1) + ')');
+          if (btn) {
+            btn.textContent = text;
+            btn.dataset.question = text;
+          }
+        });
+        setText('#avatar-ai .ai-message--bot .ai-message__bubble', '你好，我是王聪立的 AI 分身。你可以问我教育背景、项目经验、技能结构、产品思维，或者为什么我适合产品经理 / AI 产品经理岗位。');
+        setAttr('#avatar-ai .ai-profile__avatar', 'alt', 'AI 分身头像');
+        setText('#avatar-ai label[for="aiQuestionInput"]', '输入你的问题');
+        setAttr('#aiQuestionInput', 'placeholder', '例如：你在项目里通常负责什么？');
+        setText('#avatar-ai .ai-input .btn', '发送问题');
         setText('#about .section-title', '教育背景');
         setText('#about .item:nth-child(1) h4', '交互设计本科');
         setText('#about .item:nth-child(1) .meta', '2022 – 2024 · 悉尼大学');
@@ -661,6 +887,25 @@
         setAttr('#project-modal', 'aria-label', '作品详情');
         setAttr('.project-modal__close', 'aria-label', '关闭');
         setText('footer.footer', '王淙立的个人网站');
+        if (typeof window.applyAiPersonaLanguage === 'function') {
+          window.applyAiPersonaLanguage('zh');
+        }
+      }
+
+      function restoreChineseClean() {
+        document.documentElement.lang = zhState.lang;
+        document.title = zhState.title;
+        if (langToggle) {
+          langToggle.textContent = 'EN';
+          langToggle.setAttribute('aria-label', '切换语言');
+          langToggle.dataset.lang = 'zh';
+        }
+        if (template1) template1.innerHTML = zhState.template1;
+        if (template2) template2.innerHTML = zhState.template2;
+        if (template3) template3.innerHTML = zhState.template3;
+        if (typeof window.applyAiPersonaLanguage === 'function') {
+          window.applyAiPersonaLanguage('zh');
+        }
       }
 
       document.querySelectorAll('.reveal-group').forEach(function (group) {
@@ -691,7 +936,7 @@
       }
 
       const navLinks = document.querySelectorAll('.nav-links a[data-nav-section]');
-      const sectionIds = ['about', 'strengths', 'skills', 'experience', 'projects'];
+      const sectionIds = ['about', 'strengths', 'avatar-ai', 'skills', 'experience', 'projects'];
       const progressBar = document.getElementById('scrollProgressBar');
 
       function moveNavIndicator(link) {
@@ -772,20 +1017,21 @@
         applyEnglish();
         syncOpenModalContent();
       } else {
-        restoreChinese();
+        restoreChineseClean();
       }
 
       langToggle?.addEventListener('click', function () {
         const nextLang = langToggle.dataset.lang === 'en' ? 'zh' : 'en';
-        if (nextLang === 'en') {
-          applyEnglish();
-        } else {
-          restoreChinese();
-        }
-        syncOpenModalContent();
         try {
           localStorage.setItem('site-language', nextLang);
         } catch (err) {}
+        if (nextLang === 'en') {
+          applyEnglish();
+          syncOpenModalContent();
+        } else {
+          window.location.reload();
+          return;
+        }
       });
 
       navLinks.forEach(function (link) {
