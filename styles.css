@@ -677,6 +677,8 @@
       grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1.08fr);
       gap: 24px;
       align-items: center;
+      margin-top: 28px;
+      margin-bottom: 12px;
     }
 
     .project-card--feature .cover {
