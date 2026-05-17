@@ -101,27 +101,6 @@
   </header>
 
   <main class="wrap">
-    <section id="chatbot">
-      <div class="chatbot-panel reveal-group">
-        <div class="chatbot-panel__head reveal">
-          <div>
-            <div class="eyebrow">AI Assistant</div>
-            <h2 class="section-title">和我的 AI 助手聊聊</h2>
-          </div>
-          <span class="chatbot-panel__status">Online</span>
-        </div>
-        <div class="chatbot-embed reveal">
-          <iframe
-            src="https://udify.app/chatbot/JJ7uSEWZAxSMVtl7"
-            title="AI chatbot"
-            style="width: 100%; height: 100%; min-height: 700px"
-            frameborder="0"
-            allow="microphone">
-          </iframe>
-        </div>
-      </div>
-    </section>
-
     <section id="about">
       <div class="card reveal-group">
         <h2 class="section-title reveal">教育背景</h2>
@@ -587,6 +566,215 @@
   <footer class="footer wrap reveal">
     王淙立的个人网站
   </footer>
+  <script>
+    window.difyChatbotConfig = {
+      token: 'JJ7uSEWZAxSMVtl7',
+      inputs: {
+        // You can define the inputs from the Start node here
+        // key is the variable name
+        // e.g.
+        // name: "NAME"
+      },
+      systemVariables: {
+        // user_id: 'YOU CAN DEFINE USER ID HERE',
+        // conversation_id: 'YOU CAN DEFINE CONVERSATION ID HERE, IT MUST BE A VALID UUID',
+      },
+      userVariables: {
+        // avatar_url: 'YOU CAN DEFINE USER AVATAR URL HERE',
+        // name: 'YOU CAN DEFINE USER NAME HERE',
+      },
+    };
+  </script>
+  <script
+    src="https://udify.app/embed.min.js"
+    id="JJ7uSEWZAxSMVtl7"
+    defer>
+  </script>
+  <style>
+    @keyframes difyChatWindowIn {
+      0% {
+        opacity: 0;
+        transform: translate3d(16px, 20px, 0) scale(0.94);
+        filter: blur(8px);
+      }
+      100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+        filter: blur(0);
+      }
+    }
+    @keyframes difyChatWindowOut {
+      0% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+        filter: blur(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(14px, 18px, 0) scale(0.96);
+        filter: blur(8px);
+      }
+    }
+    #dify-chatbot-bubble-button {
+      position: fixed !important;
+      right: 1.5rem !important;
+      bottom: 1.5rem !important;
+      z-index: 9999 !important;
+      background: linear-gradient(135deg, #56e0ff 0%, #6a8dff 52%, #a76bff 100%) !important;
+      border: 1px solid rgba(255,255,255,0.22) !important;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.08) inset,
+        0 16px 34px rgba(86,224,255,0.24),
+        0 0 34px rgba(167,107,255,0.28) !important;
+      overflow: hidden !important;
+      transition: transform 0.24s ease, box-shadow 0.24s ease, filter 0.24s ease !important;
+      will-change: transform, filter !important;
+    }
+    #dify-chatbot-bubble-button::before {
+      content: "" !important;
+      position: absolute !important;
+      inset: 1px !important;
+      border-radius: inherit !important;
+      background: linear-gradient(135deg, rgba(255,255,255,0.28), rgba(255,255,255,0.02)) !important;
+      pointer-events: none !important;
+    }
+    #dify-chatbot-bubble-button:hover {
+      transform: translateY(-2px) scale(1.03) !important;
+      filter: saturate(1.12) brightness(1.04) !important;
+    }
+    #dify-chatbot-bubble-button.dify-chatbot-button-active {
+      transform: scale(0.96) !important;
+    }
+    #dify-chatbot-bubble-window {
+      position: fixed !important;
+      right: 1.5rem !important;
+      bottom: 5.5rem !important;
+      width: min(24rem, calc(100vw - 2rem)) !important;
+      height: min(40rem, calc(100vh - 7rem)) !important;
+      z-index: 9999 !important;
+      overflow: hidden !important;
+      border-radius: 22px !important;
+      border: 1px solid rgba(124, 214, 255, 0.3) !important;
+      background: linear-gradient(180deg, rgba(17,31,56,0.96), rgba(8,16,32,0.98)) !important;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06) inset,
+        0 32px 90px rgba(0,0,0,0.48),
+        0 0 70px rgba(86,224,255,0.12),
+        0 0 90px rgba(167,107,255,0.1) !important;
+      transform-origin: right bottom !important;
+      animation: difyChatWindowIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+      will-change: opacity, transform, filter !important;
+    }
+    #dify-chatbot-bubble-window.dify-chatbot-is-closing {
+      pointer-events: none !important;
+      animation: difyChatWindowOut 0.24s cubic-bezier(0.4, 0, 0.2, 1) both !important;
+    }
+    #dify-chatbot-bubble-window iframe {
+      border-radius: inherit !important;
+      background: #07111f !important;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #dify-chatbot-bubble-button,
+      #dify-chatbot-bubble-window,
+      #dify-chatbot-bubble-window.dify-chatbot-is-closing {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        filter: none !important;
+      }
+    }
+  </style>
+  <script>
+    (function () {
+      var didOpenDifyChat = false;
+      var allowDifyToggle = false;
+      var observer = null;
+      var closeAnimationMs = 240;
+
+      function isDifyWindowVisible(win) {
+        if (!win) return false;
+        var style = window.getComputedStyle(win);
+        return style.display !== 'none' &&
+          style.visibility !== 'hidden' &&
+          style.opacity !== '0' &&
+          win.offsetWidth > 0 &&
+          win.offsetHeight > 0;
+      }
+
+      function openDifyChat() {
+        if (didOpenDifyChat) return true;
+
+        var button = document.getElementById('dify-chatbot-bubble-button');
+        var chatWindow = document.getElementById('dify-chatbot-bubble-window');
+
+        if (isDifyWindowVisible(chatWindow)) {
+          didOpenDifyChat = true;
+          return true;
+        }
+
+        if (button) {
+          button.click();
+          didOpenDifyChat = true;
+          return true;
+        }
+
+        return false;
+      }
+
+      function hasReachedDifyTrigger() {
+        var trigger = document.getElementById('about') || document.getElementById('intro-cards');
+        if (!trigger) return false;
+
+        var rect = trigger.getBoundingClientRect();
+        return rect.top <= window.innerHeight * 0.82;
+      }
+
+      function cleanupDifyTrigger() {
+        window.removeEventListener('scroll', handleDifyTrigger);
+        window.removeEventListener('resize', handleDifyTrigger);
+        if (observer) observer.disconnect();
+      }
+
+      function handleDifyTrigger() {
+        if (!hasReachedDifyTrigger()) return;
+        if (openDifyChat()) cleanupDifyTrigger();
+      }
+
+      function handleAnimatedDifyClose(e) {
+        var target = e.target;
+        var button = target && target.closest ? target.closest('#dify-chatbot-bubble-button') : null;
+        var chatWindow = document.getElementById('dify-chatbot-bubble-window');
+
+        if (!button || allowDifyToggle || !isDifyWindowVisible(chatWindow)) return;
+
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+
+        chatWindow.classList.add('dify-chatbot-is-closing');
+        button.classList.add('dify-chatbot-button-active');
+
+        window.setTimeout(function () {
+          allowDifyToggle = true;
+          button.click();
+          allowDifyToggle = false;
+          chatWindow.classList.remove('dify-chatbot-is-closing');
+          button.classList.remove('dify-chatbot-button-active');
+        }, closeAnimationMs);
+      }
+
+      window.addEventListener('load', function () {
+        document.addEventListener('click', handleAnimatedDifyClose, true);
+        window.addEventListener('scroll', handleDifyTrigger, { passive: true });
+        window.addEventListener('resize', handleDifyTrigger);
+
+        observer = new MutationObserver(handleDifyTrigger);
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        handleDifyTrigger();
+      });
+    })();
+  </script>
   <script src="./script.js"></script>
 </body>
 </html>
