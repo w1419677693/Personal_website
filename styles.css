@@ -552,25 +552,6 @@
       border-color: rgba(86,224,255,.35);
     }
 
-    .btn-file {
-      color: #edf2ff;
-      font-weight: 700;
-      background: linear-gradient(135deg, rgba(57, 72, 138, 0.9), rgba(92, 63, 138, 0.88));
-      border-color: rgba(123, 134, 220, 0.5);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.1) inset,
-        0 14px 28px rgba(42, 50, 106, 0.24),
-        0 0 22px rgba(91, 83, 176, 0.14);
-    }
-
-    .btn-file:hover {
-      border-color: rgba(146, 158, 240, 0.72);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.14) inset,
-        0 18px 34px rgba(42, 50, 106, 0.3),
-        0 0 28px rgba(105, 97, 196, 0.18);
-    }
-
     .btn::after,
     .project-open-btn::after {
       content: "";
@@ -672,13 +653,26 @@
       align-items: start;
     }
 
+    .ai-project {
+      margin-bottom: 20px;
+      background: linear-gradient(125deg, rgba(13, 36, 65, 0.9), rgba(36, 24, 72, 0.84));
+      border-color: rgba(125, 255, 207, 0.3);
+    }
+
+    .ai-project .project-top { align-items: center; }
+    .ai-project__eyebrow { margin-bottom: 10px; color: var(--green); }
+    .ai-project .project-index {
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      box-shadow: 0 10px 30px rgba(125, 255, 207, 0.18);
+    }
+    .ai-project .bullet-list { margin-top: 18px; }
+
     .project-card--feature {
       display: grid;
       grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1.08fr);
       gap: 24px;
       align-items: center;
-      margin-top: 28px;
-      margin-bottom: 12px;
+      margin-top: 20px;
     }
 
     .project-card--feature .cover {
@@ -795,7 +789,7 @@
 
     .timeline {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
       position: relative;
     }
@@ -849,14 +843,6 @@
       user-select: none;
       border: none;
       font: inherit;
-    }
-
-    .project-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      margin-top: 4px;
     }
 
     .detail-block {

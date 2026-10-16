@@ -336,7 +336,7 @@
 
       function applyEnglish() {
         document.documentElement.lang = 'en';
-        document.title = 'Congli Wang | Product Manager / AI Product Manager';
+        document.title = 'Congli Wang | Product Manager · Product Operations · Global Products';
         if (langToggle) {
           langToggle.textContent = '中文';
           langToggle.setAttribute('aria-label', 'Switch language');
@@ -349,11 +349,11 @@
         setText('.nav-links a[data-nav-section="projects"]', 'Portfolio');
         setText('.landing-title', 'Congli Wang Personal Website');
         setText('.landing-scroll', 'Scroll down to view the content');
-        setText('.eyebrow', 'Product Manager / AI Product Manager · Personal Portfolio');
+        setText('.hero .eyebrow', 'Product Manager / Product Operations / Global Products · Portfolio');
         setText('.hero-title-line', 'Congli Wang');
-        setText('.hero-title-role', 'Product Manager / AI Product Manager');
+        setText('.hero-title-role', 'Product Manager / Global Products');
         setText('.intro-label', 'Overview');
-        setText('.lead', 'Currently pursuing graduate study in Interaction Design at the University of Sydney, with experience in user research, requirement analysis, prototyping, usability testing, and cross-functional collaboration. I approach product work from real user problems, prioritize opportunities through competitor analysis and testing feedback, and help turn ideas into practical solutions. With both UI/UX design knowledge and working skills in Figma, HTML, CSS, JavaScript, and Python, I aim to grow in product manager, product assistant, and AI product roles.');
+        setText('.lead', 'With a bachelor’s degree in Design Computing and current master’s study in Interaction Design at the University of Sydney, I work on requirements, data diagnosis, and feature iteration for overseas AI web products. I independently drove five AI web features from requirements through testing and launch, and contributed to AI image generation configuration, prompt optimization, and SEO research. I use user research, prototyping, frontend code, and AI coding tools to validate product ideas quickly.');
         setText('.hero-actions .btn-primary', 'View Projects');
         setText('.hero-actions .btn:not(.btn-primary)', 'Experience');
         setText('.hero-contact .contact-chip:nth-child(1) small', 'Phone');
@@ -363,10 +363,10 @@
         setText('.hero-side .stat:nth-of-type(2) strong', 'University of Sydney');
         setText('.hero-side .stat:nth-of-type(2) div', 'B.Des. in Interaction Design / M.Des. in Interaction Design');
         setText('.hero-side .stat:nth-of-type(3) small', 'Target Role');
-        setText('.hero-side .stat:nth-of-type(3) strong', 'Product Manager / AI Product Manager');
-        setText('.hero-side .stat:nth-of-type(3) div', 'Requirement analysis, prototyping, testing, product delivery');
+        setText('.hero-side .stat:nth-of-type(3) strong', 'Product Manager / Product Operations / Global Products');
+        setText('.hero-side .stat:nth-of-type(3) div', 'AI web products, data-led iteration, user research');
         setText('.hero-side .stat:nth-of-type(4) small', 'Keywords');
-        ['Requirement Analysis', 'User Research', 'Figma', 'Usability Testing', 'HTML/CSS/JS', 'Python'].forEach(function (text, i) {
+        ['Requirement Analysis', 'User Research', 'AI Agent / RAG', 'Prompt Engineering', 'Data Analysis', 'AI Coding'].forEach(function (text, i) {
           setText('.hero-side .stat:nth-of-type(4) .tag:nth-child(' + (i + 1) + ')', text);
         });
         setText('#about .section-title', 'Education');
@@ -375,54 +375,55 @@
         setText('#about .item:nth-child(1) li:nth-child(1)', 'Studied JavaScript, HTML, CSS, and Adobe tools in a systematic way.');
         setText('#about .item:nth-child(1) li:nth-child(2)', 'Built strong skills in Figma, prototyping, user testing, and iterative design.');
         setText('#about .item:nth-child(2) h4', 'Master of Interaction Design (In Progress)');
-        setText('#about .item:nth-child(2) .meta', '2025 · University of Sydney');
+        setText('#about .item:nth-child(2) .meta', '2025 – 2026 · University of Sydney');
         setText('#about .item:nth-child(2) li:nth-child(1)', 'Deepening work in UI/UX optimization, testing methods, and design improvement paths.');
         setText('#about .item:nth-child(2) li:nth-child(2)', 'Strengthening the full loop from research to implementation.');
         setText('#strengths .section-title', 'Core Strengths');
-        setText('#strengths .section-desc', 'This version is tailored for product roles, so I focus my strengths on requirement understanding, user research, project delivery, and product communication.');
-        setText('#strengths .strength-card:nth-child(1) h3', 'Requirement Analysis and Problem Structuring');
-        setText('#strengths .strength-card:nth-child(1) p', 'I can prioritize issues by combining user feedback, competitor analysis, and project goals, then turn vague problems into actionable plans.');
-        setText('#strengths .strength-card:nth-child(2) h3', 'User Research and Iterative Testing');
-        setText('#strengths .strength-card:nth-child(2) p', 'I am familiar with semi-structured interviews, scenario-based tasks, usability testing, issue synthesis, and prioritization, and I use feedback to drive continuous iteration.');
-        setText('#strengths .strength-card:nth-child(3) h3', 'Cross-team Delivery and Product Communication');
-        setText('#strengths .strength-card:nth-child(3) p', 'I bring experience in task breakdown, version planning, stakeholder communication, and teamwork, and I can express ideas through both Figma and code-based prototypes.');
+        setText('#strengths .section-desc', 'I connect business goals and user behavior with data analysis, research, and quick implementation to improve AI web products.');
+        setText('#strengths .strength-card:nth-child(1) h3', 'Data-led Product Iteration');
+        setText('#strengths .strength-card:nth-child(1) p', 'I use traffic, conversion data, and session recordings to identify drop-off points, then turn findings into PRDs, page improvements, and feature recommendations.');
+        setText('#strengths .strength-card:nth-child(2) h3', 'AI Capability Configuration');
+        setText('#strengths .strength-card:nth-child(2) p', 'I have contributed to model configuration, prompt design, and integration of AI image generation, packaging capabilities into usable templates.');
+        setText('#strengths .strength-card:nth-child(3) h3', 'Research and Rapid Validation');
+        setText('#strengths .strength-card:nth-child(3) p', 'I clarify problems through interviews, usability testing, and competitor research, then validate ideas with Figma, frontend code, and AI coding tools.');
         setText('#skills .section-title', 'Skill Matrix');
-        setText('#skills .section-desc', 'My product skills are the main axis, supported by an interaction design background in prototyping, user experience, and communication.');
+        setText('#skills .section-desc', 'Skills across product requirements, AI applications, user research, prototyping, and frontend validation.');
         setText('#skills .skill-block:nth-child(1) strong', 'Product Skills');
-        ['Requirement Analysis', 'Competitor Analysis', 'Task Breakdown', 'Version Planning'].forEach(function (text, i) {
+        ['Requirement Analysis', 'PRDs', 'Conversion Funnel Analysis', 'Product Iteration'].forEach(function (text, i) {
           setText('#skills .skill-block:nth-child(1) span:nth-child(' + (i + 2) + ')', text);
         });
         setText('#skills .skill-block:nth-child(2) strong', 'Research and Testing');
-        ['Semi-structured Interviews', 'Scenario Task Design', 'Usability Testing', 'Issue Prioritization'].forEach(function (text, i) {
+        ['User Interviews', 'Think Aloud', 'Usability Testing', 'SUS'].forEach(function (text, i) {
           setText('#skills .skill-block:nth-child(2) span:nth-child(' + (i + 2) + ')', text);
         });
         setText('#skills .skill-block:nth-child(3) strong', 'Prototyping and Communication');
         ['Figma', 'Axure', 'MasterGo', 'Balsamiq', 'Information Architecture', 'Mid/High-fidelity Prototypes'].forEach(function (text, i) {
           setText('#skills .skill-block:nth-child(3) span:nth-child(' + (i + 2) + ')', text);
         });
-        setText('#skills .skill-block:nth-child(4) strong', 'Technical Range');
-        ['HTML', 'CSS', 'JavaScript', 'Python', 'RAG', 'Finetuning', 'Skill Documentation', 'vibecoding', 'Rhino', 'Fusion 360'].forEach(function (text, i) {
+        setText('#skills .skill-block:nth-child(4) strong', 'AI and Technology');
+        ['Prompt Engineering', 'RAG', 'AI Agent', 'Dify', 'Workflow', 'AI Image Generation', 'HTML', 'CSS', 'JavaScript', 'Python / Git'].forEach(function (text, i) {
           setText('#skills .skill-block:nth-child(4) span:nth-child(' + (i + 2) + ')', text);
         });
-        setText('#experience .section-title', 'Projects and Internship');
-        setText('#experience .section-desc', 'Together, these experiences form the foundation of my transition into product roles, combining research and testing with collaboration, design communication, and execution.');
-        setText('#experience .item:nth-child(1) .meta', 'Internship');
-        setText('#experience .item:nth-child(1) h4', 'Vancheer R&D UI Team | UI Design Intern');
-        setText('#experience .item:nth-child(1) li:nth-child(1)', 'Contributed to UI design tasks for real products and learned to understand business-driven design requirements.');
-        setText('#experience .item:nth-child(1) li:nth-child(2)', 'Practiced documenting requests systematically and translating cross-department input into interface solutions.');
-        setText('#experience .item:nth-child(1) li:nth-child(3)', 'Built practical experience collaborating with multiple roles to push design work forward.');
-        setText('#experience .item:nth-child(2) .meta', 'University Project');
-        setText('#experience .item:nth-child(2) h4', 'Focus Improvement Project | Product Experience / Project Management');
-        setText('#experience .item:nth-child(2) li:nth-child(1)', 'Led requirement clarification and competitor analysis, set testing tasks and metrics, and coordinated recruitment and schedules.');
-        setText('#experience .item:nth-child(2) li:nth-child(2)', 'Improved information hierarchy and interaction rhythm based on user feedback to optimize task completion paths.');
-        setText('#experience .item:nth-child(2) li:nth-child(3)', 'Organized reviews and version planning, aligned design, engineering, and stakeholders, and supported launch preparation.');
-        setText('#experience .item:nth-child(3) .meta', 'University / External Project');
-        setText('#experience .item:nth-child(3) h4', 'Water-saving Pop-up / Documentary Production | Collaborative Practice');
-        setText('#experience .item:nth-child(3) li:nth-child(1)', 'Handled research, testing, information architecture, and interaction flow design for the water-saving pop-up project while helping drive the team forward.');
-        setText('#experience .item:nth-child(3) li:nth-child(2)', 'Worked on shot planning, on-site coordination, and post-production handoff in documentary production, improving cross-team collaboration.');
-        setText('#experience .item:nth-child(3) li:nth-child(3)', 'These experiences strengthened my ability to manage requirements, communication, and execution in complex projects.');
+        setText('#experience .section-title', 'Internships');
+        setText('#experience .section-desc', 'Experience in overseas AI product iteration and enterprise UI design, covering requirements, cross-functional delivery, and validation.');
+        setText('#experience .item:nth-child(1) .meta', 'Jun 2026 – Present · Chuangzhe (Duomai Group)');
+        setText('#experience .item:nth-child(1) h4', 'Overseas AI Business Team | Product Specialist / Product Intern');
+        setText('#experience .item:nth-child(1) li:nth-child(1)', 'Used traffic and conversion data plus session recordings to identify drop-off, interaction, and comprehension issues in overseas AI web products; produced PRDs and iteration recommendations.');
+        setText('#experience .item:nth-child(1) li:nth-child(2)', 'Independently drove five overseas AI web features from requirements and solution design through testing and launch, using AI coding tools to adjust layouts, CTAs, and key interactions.');
+        setText('#experience .item:nth-child(1) li:nth-child(3)', 'Contributed to model and prompt configuration and Semrush-based SEO research. During the page optimization period, monthly registrations grew from several hundred to 1,000+, and registration conversion improved by about 10% versus before the redesign.');
+        setText('#experience .item:nth-child(2) .meta', 'Nov 2025 – Jan 2026 · Vancheer');
+        setText('#experience .item:nth-child(2) h4', 'R&D UI Team | Product / UI Intern');
+        setText('#experience .item:nth-child(2) li:nth-child(1)', 'Contributed to interface design and requirements gathering, translating feedback from business teams into clearer page and interaction proposals.');
+        setText('#experience .item:nth-child(2) li:nth-child(2)', 'Supported requirements communication, design handoff, and version iteration in a B2B product and engineering environment.');
+        setText('#experience .item:nth-child(2) li:nth-child(3)', 'Improved interaction logic and visual design in an older UI to improve usability.');
         setText('#projects .section-title', 'Selected Projects');
-        setText('#projects .section-desc', 'The following content is curated from my portfolio and highlights how I work across requirement understanding, research and testing, prototyping, and cross-team execution.');
+        setText('#projects .section-desc', 'From AI Agent and RAG applications to interaction design and data storytelling, these projects show how I turn research into usable experiences.');
+        setText('#projects .ai-project__eyebrow', 'AI Product Practice');
+        setText('#projects .ai-project h3', 'Personal AI Twin and RAG Knowledge Base');
+        setText('#projects .ai-project .project-top p', 'Built a personal knowledge base and AI Agent with Dify so recruiters can explore my education, projects, skills, and portfolio through conversation.');
+        setText('#projects .ai-project .bullet-list li:nth-child(1)', 'Structured résumé and portfolio content and connected RAG retrieval to provide the Agent with personal knowledge.');
+        setText('#projects .ai-project .bullet-list li:nth-child(2)', 'Designed its role, system prompt, answer boundaries, and conversation strategy, iterating on accuracy and clarity through question testing.');
+        setText('#projects .ai-project .bullet-list li:nth-child(3)', 'Integrated the Agent into my portfolio site to explore a conversational way to learn about my work.');
         setAttr('#projects .project-card:nth-child(1) .cover', 'alt', 'Project 1 cover image');
         setText('#projects .project-card:nth-child(1) h3', 'Project 1 | Focus Improvement / Food Delivery UI Design');
         setText('#projects .project-card:nth-child(1) .project-top p', 'An individual university project completed from background research and user interviews through two rounds of testing and final UI iteration.');
@@ -545,11 +546,11 @@
         setText('.nav-links a[data-nav-section="projects"]', '作品集');
         setText('.landing-title', '王淙立的个人主页');
         setText('.landing-scroll', '向下滚动查看内容');
-        setText('.eyebrow', '产品经理 / AI产品经理 · 个人求职主页');
+        setText('.hero .eyebrow', '产品经理 / 产品运营 / 出海产品 · 个人求职主页');
         setText('.hero-title-line', '王淙立');
-        setText('.hero-title-role', '产品经理 / AI产品经理');
+        setText('.hero-title-role', '产品经理 / 出海产品');
         setText('.intro-label', '简要介绍');
-        setText('.lead', '悉尼大学交互设计本科、硕士在读，具备用户研究、需求分析、原型设计、可用性测试与跨团队协作经验。我能够从用户问题出发，结合竞品分析、测试反馈与项目目标梳理需求优先级，并推动产品方案落地。同时理解 UI / UX 设计流程，也能使用 Figma、HTML、CSS、JavaScript 和 Python 进行产品表达与快速验证，目前希望聚焦产品经理、产品助理与 AI 产品经理方向的发展。');
+        setText('.lead', '悉尼大学交互设计本科、硕士在读，现于 AI 出海业务组参与 Web 产品需求分析、数据诊断与功能迭代。曾独立推进 5 个海外 AI Web 功能从需求分析到测试上线，并参与 AI 图像生成能力配置、Prompt 优化与 SEO 研究。熟悉用户研究、原型设计和可用性测试，也能使用 HTML、CSS、JavaScript 与 AI Coding 工具快速验证产品想法。');
         setText('.hero-actions .btn-primary', '查看作品');
         setText('.hero-actions .btn:not(.btn-primary)', '项目经验');
         setText('.hero-contact .contact-chip:nth-child(1) small', '电话');
@@ -559,10 +560,10 @@
         setText('.hero-side .stat:nth-of-type(2) strong', '悉尼大学');
         setText('.hero-side .stat:nth-of-type(2) div', '交互设计本科 / 交互设计硕士在读');
         setText('.hero-side .stat:nth-of-type(3) small', '求职方向');
-        setText('.hero-side .stat:nth-of-type(3) strong', '产品经理 / AI产品经理');
-        setText('.hero-side .stat:nth-of-type(3) div', '需求分析、原型设计、测试迭代、产品推进');
+        setText('.hero-side .stat:nth-of-type(3) strong', '产品经理 / 产品运营 / 出海产品');
+        setText('.hero-side .stat:nth-of-type(3) div', 'AI Web 产品、数据驱动迭代、用户研究');
         setText('.hero-side .stat:nth-of-type(4) small', '关键词');
-        ['需求分析', '用户研究', 'Figma', '可用性测试', 'HTML/CSS/JS', 'Python'].forEach(function (text, i) {
+        ['需求分析', '用户研究', 'AI Agent / RAG', 'Prompt Engineering', '数据分析', 'AI Coding'].forEach(function (text, i) {
           setText('.hero-side .stat:nth-of-type(4) .tag:nth-child(' + (i + 1) + ')', text);
         });
         setText('#about .section-title', '教育背景');
@@ -571,54 +572,55 @@
         setText('#about .item:nth-child(1) li:nth-child(1)', '系统学习 JavaScript、HTML、CSS 与 Adobe 系列工具。');
         setText('#about .item:nth-child(1) li:nth-child(2)', '重点掌握 Figma、原型搭建、用户测试与迭代方法。');
         setText('#about .item:nth-child(2) h4', '交互设计硕士（在读）');
-        setText('#about .item:nth-child(2) .meta', '2025 · 悉尼大学');
+        setText('#about .item:nth-child(2) .meta', '2025 – 2026 · 悉尼大学');
         setText('#about .item:nth-child(2) li:nth-child(1)', '进一步深入 UI / UX 体验优化、测试方法与设计改进路径。');
         setText('#about .item:nth-child(2) li:nth-child(2)', '强化从研究到落地的设计闭环能力。');
         setText('#strengths .section-title', '核心优势');
-        setText('#strengths .section-desc', '这版简历更适合产品方向，因此我把核心能力集中在需求理解、用户研究、项目推进和产品表达四个层面。');
-        setText('#strengths .strength-card:nth-child(1) h3', '需求分析与问题拆解');
-        setText('#strengths .strength-card:nth-child(1) p', '能够结合用户反馈、竞品分析和项目目标梳理问题优先级，提炼改进方向，并将模糊问题转化为可执行方案。');
-        setText('#strengths .strength-card:nth-child(2) h3', '用户研究与测试迭代');
-        setText('#strengths .strength-card:nth-child(2) p', '熟悉半结构化访谈、情景任务设计、可用性测试、问题归纳与分级，能够基于反馈推动持续迭代。');
-        setText('#strengths .strength-card:nth-child(3) h3', '跨团队推进与产品表达');
-        setText('#strengths .strength-card:nth-child(3) p', '具备任务拆解、版本管理、跨角色沟通和团队协作经验，可使用 Figma 与基础代码能力完成原型表达与快速验证。');
+        setText('#strengths .section-desc', '从业务目标与用户行为出发，结合数据分析、研究验证与快速实现，推动 AI Web 产品持续迭代。');
+        setText('#strengths .strength-card:nth-child(1) h3', '数据驱动的产品迭代');
+        setText('#strengths .strength-card:nth-child(1) p', '结合访问、转化数据与用户行为录屏定位页面流失点，输出 PRD、页面优化方案和功能迭代建议。');
+        setText('#strengths .strength-card:nth-child(2) h3', 'AI 能力配置与产品化');
+        setText('#strengths .strength-card:nth-child(2) p', '参与 AI 图像生成产品的模型配置、Prompt 设计与能力接入，将生成能力整理为用户可直接使用的功能模板。');
+        setText('#strengths .strength-card:nth-child(3) h3', '研究验证与快速落地');
+        setText('#strengths .strength-card:nth-child(3) p', '通过用户访谈、可用性测试和竞品研究明确问题，再用 Figma、前端代码及 AI Coding 工具完成原型与验证。');
         setText('#skills .section-title', '技能矩阵');
-        setText('#skills .section-desc', '以产品能力为主轴，同时保留交互设计背景带来的原型、体验与表达优势。');
+        setText('#skills .section-desc', '覆盖产品需求、AI 应用、用户研究、原型设计与前端验证。');
         setText('#skills .skill-block:nth-child(1) strong', '产品能力');
-        ['需求分析', '竞品分析', '任务拆解', '版本管理'].forEach(function (text, i) {
+        ['需求分析', 'PRD', '转化漏斗分析', '产品迭代'].forEach(function (text, i) {
           setText('#skills .skill-block:nth-child(1) span:nth-child(' + (i + 2) + ')', text);
         });
         setText('#skills .skill-block:nth-child(2) strong', '用户研究与测试');
-        ['半结构化访谈', '情景任务设计', '可用性测试', '问题分级'].forEach(function (text, i) {
+        ['用户访谈', 'Think Aloud', '可用性测试', 'SUS'].forEach(function (text, i) {
           setText('#skills .skill-block:nth-child(2) span:nth-child(' + (i + 2) + ')', text);
         });
         setText('#skills .skill-block:nth-child(3) strong', '原型与表达');
-        ['Figma', 'Balsamiq', '信息架构', '中高保真原型'].forEach(function (text, i) {
+        ['Figma', 'Axure', 'MasterGo', 'Balsamiq', '信息架构', '中高保真原型'].forEach(function (text, i) {
           setText('#skills .skill-block:nth-child(3) span:nth-child(' + (i + 2) + ')', text);
         });
-        setText('#skills .skill-block:nth-child(4) strong', '技术与扩展能力');
-        ['HTML', 'CSS', 'JavaScript', 'Python', 'RAG', 'Finetuning', 'Skill 文档撰写', 'vibecoding', 'Rhino', 'Fusion 360'].forEach(function (text, i) {
+        setText('#skills .skill-block:nth-child(4) strong', 'AI 与技术');
+        ['Prompt Engineering', 'RAG', 'AI Agent', 'Dify', 'Workflow', 'AI 图像生成', 'HTML', 'CSS', 'JavaScript', 'Python / Git'].forEach(function (text, i) {
           setText('#skills .skill-block:nth-child(4) span:nth-child(' + (i + 2) + ')', text);
         });
-        setText('#experience .section-title', '项目与实习经历');
-        setText('#experience .section-desc', '这些经历共同构成了我向产品岗位转型的基础：既有需求与测试视角，也有团队协作、设计表达与执行落地经验。');
-        setText('#experience .item:nth-child(1) .meta', '实习经历');
-        setText('#experience .item:nth-child(1) h4', '达实智能研发部 UI组｜UI设计实习');
-        setText('#experience .item:nth-child(1) li:nth-child(1)', '参与部分产品的 UI 设计工作，理解真实业务场景中的设计需求。');
-        setText('#experience .item:nth-child(1) li:nth-child(2)', '学习系统性记录并协调其他部门提出的要求，转化为对应的界面方案。');
-        setText('#experience .item:nth-child(1) li:nth-child(3)', '积累了在企业环境中与不同角色协作推进设计任务的实际经验。');
-        setText('#experience .item:nth-child(2) .meta', '校内项目');
-        setText('#experience .item:nth-child(2) h4', '专注度提升项目｜产品体验 / 项目管理');
-        setText('#experience .item:nth-child(2) li:nth-child(1)', '牵头需求澄清与竞品分析，制定测试任务与评估指标，安排招募与测试排期。');
-        setText('#experience .item:nth-child(2) li:nth-child(2)', '基于用户反馈迭代信息层级与交互节奏，优化任务完成路径与可达性。');
-        setText('#experience .item:nth-child(2) li:nth-child(3)', '组织评审与版本节奏，协调设计、研发与干系人共识，支持上线准备。');
-        setText('#experience .item:nth-child(3) .meta', '校内 / 校外项目');
-        setText('#experience .item:nth-child(3) h4', '节水快闪活动 / 纪录片摄制｜综合协作经验');
-        setText('#experience .item:nth-child(3) li:nth-child(1)', '在节水快闪活动中负责研究、测试、信息架构与交互流程设计，并承担团队推进职责。');
-        setText('#experience .item:nth-child(3) li:nth-child(2)', '在纪录片摄制中完成分镜、机位调度与后期流程对接，提升跨团队协同能力。');
-        setText('#experience .item:nth-child(3) li:nth-child(3)', '这些经历强化了我在复杂项目中处理需求、沟通与执行的综合能力。');
+        setText('#experience .section-title', '实习经历');
+        setText('#experience .section-desc', '从 AI 出海产品迭代到企业 UI 设计，积累需求分析、跨团队协作与上线验证经验。');
+        setText('#experience .item:nth-child(1) .meta', '2026.06 – 至今 · 创作者（多麦集团旗下公司）');
+        setText('#experience .item:nth-child(1) h4', 'AI 出海业务组｜产品专员 / 产品实习生');
+        setText('#experience .item:nth-child(1) li:nth-child(1)', '结合后台访问、转化数据与用户行为录屏，定位海外 AI Web 产品的页面流失、操作阻塞和信息理解问题，输出 PRD 与迭代建议。');
+        setText('#experience .item:nth-child(1) li:nth-child(2)', '独立推进 5 个海外 AI Web 功能从需求分析、方案设计到测试上线，并使用 AI Coding 辅助调整页面布局、CTA 与关键交互。');
+        setText('#experience .item:nth-child(1) li:nth-child(3)', '参与模型能力配置与 Prompt 迭代，同时开展 Semrush 关键词和 SEO 研究；参与的页面优化期间，月注册用户由数百增长至 1,000+，注册转化率较改版前提升约 10%。');
+        setText('#experience .item:nth-child(2) .meta', '2025.11 – 2026.01 · 达实智能');
+        setText('#experience .item:nth-child(2) h4', '研发部 UI 组｜产品 / UI 实习');
+        setText('#experience .item:nth-child(2) li:nth-child(1)', '参与产品界面设计与需求整理，收集不同业务部门的反馈，将模糊需求转化为更明确的页面和交互方案。');
+        setText('#experience .item:nth-child(2) li:nth-child(2)', '协助需求沟通、设计交付与版本迭代，积累 B 端产品与研发团队的协作经验。');
+        setText('#experience .item:nth-child(2) li:nth-child(3)', '改进旧版 UI 的交互逻辑与图形设计，优化使用体验。');
         setText('#projects .section-title', '代表项目');
-        setText('#projects .section-desc', '以下内容基于作品集整理，重点展示我在需求理解、研究测试、原型表达与跨团队推进中的具体能力。');
+        setText('#projects .section-desc', '从 AI Agent / RAG 应用到交互设计与数据叙事，展示我如何将研究转化为可使用的产品体验。');
+        setText('#projects .ai-project__eyebrow', 'AI 产品实践');
+        setText('#projects .ai-project h3', 'AI 个人分身与 RAG 知识库');
+        setText('#projects .ai-project .project-top p', '基于 Dify 构建个人知识库与 AI Agent，让招聘者能围绕教育背景、项目经历、技能和作品集进行对话式了解。');
+        setText('#projects .ai-project .bullet-list li:nth-child(1)', '将简历与作品集内容结构化整理，接入 RAG 检索，为 Agent 提供个人知识来源。');
+        setText('#projects .ai-project .bullet-list li:nth-child(2)', '设计角色定位、System Prompt、回答边界与对话策略，并通过问答测试迭代准确性和表达。');
+        setText('#projects .ai-project .bullet-list li:nth-child(3)', '将 Agent 集成到作品集网站，探索“作品集 + AI 数字分身”的信息获取方式。');
         setAttr('#projects .project-card:nth-child(1) .cover', 'alt', '项目一封面图');
         setText('#projects .project-card:nth-child(1) h3', '项目一｜专注度提升 / 外卖场景 UI 设计');
         setText('#projects .project-card:nth-child(1) .project-top p', '独立完成从背景调查、用户调研到两轮用户测试与最终 UI 迭代的校内项目。');
